@@ -1,0 +1,28 @@
+cmake_minimum_required( VERSION 3.15 )
+
+project( Shared-C 
+    VERSION 0.0.1
+    LANGUAGES C
+)
+
+set(CMAKE_C_STANDARD 11)
+
+set(SHAREDC_BUILD)
+
+option(SHAREDC_SHARED "Shared build" ON)
+option(SHAREDC_STATIC "Static build" OFF)
+
+if(CMAKE_SYSTEM_NAME STREQUAL WASI)
+  set(SHAREDC_STATIC ON CACHE BOOL "Static option" FORCE)
+  set(SHAREDC_SHARED OFF CACHE BOOL "Shared option" FORCE)
+endif()
+
+if(NOT SHAREDC_STATIC AND SHAREDC_SHARED)
+  set(SHAREDC_BUILD SHARED)
+else(SHAREDC_STATIC)
+  set(SHAREDC_BUILD STATIC)
+endif()
+
+add_library(${PROJECT_NAME}
+    ${SHAREDC_BUILD}
+)
