@@ -42,4 +42,5 @@ add_library(${PROJECT_NAME}
     src/abs.h
     src/mathUtility.h
     src/stringConstexpr.h
+    src/stringHash.h
 )
