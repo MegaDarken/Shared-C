@@ -43,4 +43,5 @@ add_library(${PROJECT_NAME}
     src/mathUtility.h
     src/stringConstexpr.h
     src/stringHash.h
+    src/swapping.h
 )
