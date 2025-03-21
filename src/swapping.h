@@ -36,11 +36,12 @@ limitations under the License.
     do { \
         __typeof__ (a) _a = (a); \
         __typeof__ (b) _b = (b); \
+        __typeof__ (size) _size = (size); \
         if (_a == _b) break; \
-        unsigned char swap_temp[size]; \
-        memcpy(swap_temp,_b,size); \
-        memcpy(_b,_a,size); \
-        memcpy(_a,swap_temp,size); \
+        unsigned char swap_temp[_size]; \
+        memcpy(swap_temp,_b,_size); \
+        memcpy(_b,_a,_size); \
+        memcpy(_a,swap_temp,_size); \
     } while(0)
 
 #define swap(...) swap_helper(__VA_ARGS__, swap_size, swap_known)(__VA_ARGS__)
