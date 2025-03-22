@@ -41,6 +41,7 @@ add_library(${PROJECT_NAME}
     ${SHAREDC_BUILD}
     src/abs.h
     src/mathUtility.h
+    src/reverse.h
     src/stringConstexpr.h
     src/stringHash.h
     src/swapping.h
