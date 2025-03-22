@@ -40,6 +40,8 @@ endif()
 add_library(${PROJECT_NAME}
     ${SHAREDC_BUILD}
     src/abs.h
+    src/fileUtility.c
+    src/fileUtility.h
     src/mathUtility.h
     src/rawRead.c
     src/rawRead.h
