@@ -15,8 +15,9 @@ struct termios orig_termios;
 #endif //_WIN16 || _WIN32
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif //__cplusplus
+
 void disableRawMode()
 {
 #ifdef _WIN32 //_WIN16 ||
@@ -26,9 +27,6 @@ void disableRawMode()
 #endif //_WIN16 || _WIN32
 }
 
-#ifdef __cplusplus
-extern "C"
-#endif //__cplusplus
 void enableRawMode()
 {
 #ifdef _WIN32 //_WIN16 ||
@@ -42,9 +40,6 @@ void enableRawMode()
 #endif //_WIN16 || _WIN32
 }
 
-#ifdef __cplusplus
-extern "C"
-#endif //__cplusplus
 ssize_t rawReadBuffer(void* array, ssize_t count)
 {
     enableRawMode();
@@ -75,9 +70,6 @@ ssize_t rawReadBuffer(void* array, ssize_t count)
     return result;
 } 
 
-#ifdef __cplusplus
-extern "C"
-#endif //__cplusplus
 int rawRead()
 {
   int c = 0;
@@ -86,9 +78,6 @@ int rawRead()
   return c;
 }
 
-#ifdef __cplusplus
-extern "C"
-#endif //__cplusplus
 void rawReadLoop(const int escape)
 {
     enableRawMode();
@@ -114,9 +103,6 @@ void rawReadLoop(const int escape)
     disableRawMode();
 }
 
-#ifdef __cplusplus
-extern "C"
-#endif //__cplusplus
 char rawReadBool(const int trueChar, const int falseChar)
 {
     for (;;)
@@ -128,7 +114,6 @@ char rawReadBool(const int trueChar, const int falseChar)
     }
 }
 
-// int main(int argc, char** argv)
-// {
-//     //rawRead(27);//27 is Esc
-// }
+#ifdef __cplusplus
+}
+#endif //__cplusplus
