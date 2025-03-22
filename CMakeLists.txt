@@ -57,4 +57,5 @@ add_library(${PROJECT_NAME}
     src/stringConstexpr.h
     src/stringHash.h
     src/swapping.h
+    src/typeUtility.h
 )
