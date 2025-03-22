@@ -41,6 +41,8 @@ add_library(${PROJECT_NAME}
     ${SHAREDC_BUILD}
     src/abs.h
     src/mathUtility.h
+    src/rawRead.c
+    src/rawRead.h
     src/reverse.h
     src/spansUtility.h
     src/stringConstexpr.h
