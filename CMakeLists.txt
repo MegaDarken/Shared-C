@@ -42,6 +42,8 @@ add_library(${PROJECT_NAME}
     src/abs.h
     src/characterSet.c
     src/characterSet.h
+    src/clearInput.c
+    src/clearInput.h
     src/fileUtility.c
     src/fileUtility.h
     src/mathUtility.h
