@@ -45,6 +45,7 @@ add_library(${PROJECT_NAME}
     src/fileUtility.c
     src/fileUtility.h
     src/mathUtility.h
+    src/memMacro.h
     src/rawRead.c
     src/rawRead.h
     src/reverse.h
