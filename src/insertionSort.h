@@ -1,0 +1,25 @@
+/*
+Copyright (C) 2024 Joseph Swales
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+#ifndef __INSERTION_SORT__
+#define __INSERTION_SORT__
+
+#include <stdlib.h>
+
+void insertionSort_ascending(void* array, const size_t count, const size_t elementSize, void* firstElementComparisonPtr);
+void insertionSort_descending(void* array, const size_t count, const size_t elementSize, void* firstElementComparisonPtr);
+
+#endif // __INSERTION_SORT__
