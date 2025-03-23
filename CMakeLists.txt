@@ -55,6 +55,7 @@ add_library(${PROJECT_NAME}
     src/rawRead.c
     src/rawRead.h
     src/reverse.h
+    src/rotate.h
     src/spansUtility.h
     src/stringConstexpr.h
     src/stringHash.h
