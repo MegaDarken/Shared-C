@@ -20,8 +20,9 @@ limitations under the License.
 #include <stdlib.h>
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif //__cplusplus
+
 FILE* fileUtility_open(const char* filename, const char* modes)
 {
     FILE* filePointer = fopen(filename, modes);
@@ -206,3 +207,7 @@ void fileUtility_afterComment(int reference, FILE* filePointer)
      
     ungetc(value, filePointer);
 }
+
+#ifdef __cplusplus
+}
+#endif //__cplusplus
