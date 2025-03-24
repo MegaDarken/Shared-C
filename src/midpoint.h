@@ -43,7 +43,7 @@ limitations under the License.
     float: midpointf(a,b), \
     double: midpointf(a,b), \
     long double: midpointf(a,b) \
-    );
+    )
 
 #define midpoint3(a,b,c) \
     ({ __typeof__ (a) _a = (a); \
@@ -81,7 +81,7 @@ limitations under the License.
     float: midpoint4f(a,b,c,d), \
     double: midpoint4f(a,b,c,d), \
     long double: midpoint4f(a,b,c,d) \
-    );
+    )
 
 char midpoint_char(const char a, const char b);
 int midpoint_int(const int a, const int b);
