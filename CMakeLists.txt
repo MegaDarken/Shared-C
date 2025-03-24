@@ -46,6 +46,8 @@ add_library(${PROJECT_NAME}
     src/clearInput.h
     src/fileUtility.c
     src/fileUtility.h
+    src/floorPower.c
+    src/floorPower.h
     src/insertionSort.c
     src/insertionSort.h
     src/mathUtility.h
