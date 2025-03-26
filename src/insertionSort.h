@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2024 Joseph Swales
+Copyright (C) 2025 Joseph Swales
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ limitations under the License.
 
 #include <stdlib.h>
 
-void insertionSort_ascending(void* array, const size_t count, const size_t elementSize, void* firstElementComparisonPtr);
-void insertionSort_descending(void* array, const size_t count, const size_t elementSize, void* firstElementComparisonPtr);
+void insertionSort(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *));
 
 #endif // __INSERTION_SORT__

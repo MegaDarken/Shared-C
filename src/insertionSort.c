@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2024 Joseph Swales
+Copyright (C) 2025 Joseph Swales
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -18,30 +18,13 @@ limitations under the License.
 
 #include "swapping.h"
 
-void insertionSort_ascending(void* array, const size_t count, const size_t elementSize, void* firstElementComparisonPtr)
+void insertionSort(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *))
 {
-    size_t relative = firstElementComparisonPtr - array;
-
     for (size_t i = 1; i < count; i++)
     {
-        for (size_t j = i * elementSize; j > 0 && *(long*)(array + relative + (j - elementSize)) > *(long*)(array + relative + j); j -= elementSize)
+        for (size_t j = i * elementSize; j > 0 && compar((array + j - elementSize), (array + j)); j -= elementSize)
         {
             swap((array + j - elementSize), (array + j), elementSize);
         }
-        
-    }
-}
-
-void insertionSort_descending(void* array, const size_t count, const size_t elementSize, void* firstElementComparisonPtr)
-{
-    size_t relative = firstElementComparisonPtr - array;
-
-    for (size_t i = 1; i < count; i++)
-    {
-        for (size_t j = i * elementSize; j > 0 && *(long*)(array + relative + (j - elementSize)) < *(long*)(array + relative + j); j -= elementSize)
-        {
-            swap((array + j - elementSize), (array + j), elementSize);
-        }
-        
     }
 }
