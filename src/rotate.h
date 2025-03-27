@@ -19,7 +19,7 @@ limitations under the License.
 
 #include "reverse.h"
 
-#define rotate_helper(_1, _2, _3, NAME, ...) NAME
+#define rotate_helper(_1, _2, _3, _4, NAME, ...) NAME
 
 #define rotate_size(array, arrayCount, elementSize, rotationCount) \
 do { \
