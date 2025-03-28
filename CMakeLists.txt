@@ -56,6 +56,7 @@ add_library(${PROJECT_NAME}
     src/midpoint.h
     src/rawRead.c
     src/rawRead.h
+    src/reverse.c
     src/reverse.h
     src/rotate.h
     src/spansUtility.h
