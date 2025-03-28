@@ -1,23 +1,10 @@
-/*
-Copyright (C) 2025 Joseph Swales
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 
 #include <stdlib.h>
 #include <string.h>
 
 #include "swapping.h"
+#include "rotate.h"
 
 //See: https://en.m.wikipedia.org/wiki/Block_sort
 
@@ -53,10 +40,33 @@ void mergeBuffered(void* array, const size_t left, const size_t mid, const size_
     memcpy(array + left, buffer, insert * elementSize);
 }
 
+void mergeInPlace(void* array, const size_t left, const size_t mid, const size_t right, const size_t elementSize, int (* compar)(const void *, const void *))
+{
+    if (compar(array + ((mid - 1) * elementSize), array + (mid * elementSize)) == -1)
+    {
+        return;
+    }
+
+    size_t leftIndex = left;
+    size_t rightIndex = mid;
+
+    while(leftIndex < rightIndex && rightIndex < right)
+    {
+        int comparisonValue = compar(array + (leftIndex * elementSize), array + (rightIndex * elementSize));
+
+        if (comparisonValue > 0)
+        {
+            rotate_size(array + ((leftIndex) * elementSize), right - (leftIndex), elementSize, (right - rightIndex));
+            rightIndex = right - (rightIndex - leftIndex);
+        }
+
+        leftIndex++;
+    }
+}
 
 // #include <stdio.h>
 
-// int comp(const void * a, const void * b)
+// int int_comp(const void * a, const void * b)
 // {
 //     int arg1 = *(const int*)a;
 //     int arg2 = *(const int*)b;
@@ -66,9 +76,9 @@ void mergeBuffered(void* array, const size_t left, const size_t mid, const size_
 //     return 0;
 // }
 
-// int main (int argc, char *argv[])
+// int merge_test()
 // {
-// 	printf("Merge\n");
+// 	printf("\nMerge\n");
 
 //     int array[] = {1,3,5,7,9,2,4,6,8,10};
 //     int buffer[sizeof(array)/sizeof(array[0])];
@@ -80,7 +90,7 @@ void mergeBuffered(void* array, const size_t left, const size_t mid, const size_
     
 //     printf("\ndoing.\n");
 
-//     mergeBuffered(array, 0, 5, sizeof(array)/sizeof(array[0]), sizeof(array[0]), buffer, comp);
+//     mergeBuffered(array, 0, 5, sizeof(array)/sizeof(array[0]), sizeof(array[0]), buffer, int_comp);
 
 //     for (size_t i = 0; i < (sizeof(array)/sizeof(array[0])); i++)
 //     {
@@ -88,5 +98,16 @@ void mergeBuffered(void* array, const size_t left, const size_t mid, const size_
 //     }
 
 //     printf("\ndone.\n");
+
+//     printf("InPlace\n");
+
+//     int arrayB[] = {1,3,5,7,9,11,13,15,2,4,6,8,10};
+
+//     mergeInPlace(arrayB, 0, 8, sizeof(arrayB)/sizeof(arrayB[0]), sizeof(arrayB[0]), int_comp);
+
+//     for (size_t i = 0; i < (sizeof(arrayB)/sizeof(arrayB[0])); i++)
+//     {
+//         printf("%d ", arrayB[i]);
+//     }
 
 // }
