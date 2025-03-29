@@ -52,6 +52,8 @@ add_library(${PROJECT_NAME}
     src/insertionSort.h
     src/mathUtility.h
     src/memMacro.h
+    src/merge.c
+    src/merge.h
     src/midpoint.c
     src/midpoint.h
     src/rawRead.c
