@@ -43,6 +43,8 @@ add_library(${PROJECT_NAME}
     src/arrayCheck.h
     src/characterSet.c
     src/characterSet.h
+    src/charArray.c
+    src/charArray.c
     src/clearInput.c
     src/clearInput.h
     src/fileUtility.c
