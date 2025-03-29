@@ -51,6 +51,7 @@ add_library(${PROJECT_NAME}
     src/floorPower.h
     src/insertionSort.c
     src/insertionSort.h
+    src/loopUtility.h
     src/mathUtility.h
     src/memMacro.h
     src/merge.c
