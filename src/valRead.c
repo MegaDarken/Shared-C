@@ -6,6 +6,10 @@
 
 #define VALREAD_BUFFERSIZE 256
 
+#ifdef __cplusplus
+extern "C" {
+#endif //__cplusplus
+
 void valRead_charDest(char *dest, const char *invalidInputText)
 {
     for (;;)
@@ -93,3 +97,7 @@ size_t valRead_size_t(const char *invalidInputText)
     valRead_intDest(&output, invalidInputText); 
     return output;
 }
+
+#ifdef __cplusplus
+}
+#endif //__cplusplus
