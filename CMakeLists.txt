@@ -68,4 +68,6 @@ add_library(${PROJECT_NAME}
     src/stringHash.h
     src/swapping.h
     src/typeUtility.h
+    src/valRead.c
+    src/valRead.h
 )
