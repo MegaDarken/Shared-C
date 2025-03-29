@@ -40,6 +40,7 @@ endif()
 add_library(${PROJECT_NAME}
     ${SHAREDC_BUILD}
     src/abs.h
+    src/arrayCheck.h
     src/characterSet.c
     src/characterSet.h
     src/clearInput.c
