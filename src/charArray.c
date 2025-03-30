@@ -448,6 +448,14 @@ int charArray_comparCount(const void * a, const void * b)
     return arg1->count - arg2->count;
 }
 
+int charArray_comparCountDesc(const void * a, const void * b)
+{
+    const struct charArray *arg1 = (const struct charArray *)a;
+    const struct charArray *arg2 = (const struct charArray *)b;
+
+    return arg2->count - arg1->count;
+}
+
 #ifdef __cplusplus
 }
 #endif //__cplusplus

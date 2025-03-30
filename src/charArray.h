@@ -80,6 +80,7 @@ void charArray_wprintAsChar(const struct charArray *var);
 // void charArray_printAsVolume(struct charArray *var);
 
 int charArray_comparCount(const void * a, const void * b);
+int charArray_comparCountDesc(const void * a, const void * b);
 
 #ifdef __cplusplus
 }
