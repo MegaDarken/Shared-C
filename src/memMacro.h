@@ -17,10 +17,15 @@ limitations under the License.
 #ifndef __MEM_MACRO__
 #define __MEM_MACRO__
 
+#include <stdlib.h>
+#include <stdio.h>
+
+#define memMacro_malloc_helper(_1, _2, NAME, ...) NAME
+
 /**
  * malloc based on size of the dereferenced pointer, aborts if allocation fails.
 */
-#define memMacro_malloc(pointer) \
+#define memMacro_malloc_known(pointer) \
     do { \
         pointer = malloc(sizeof(*pointer)); \
         if (!pointer) { \
@@ -29,10 +34,23 @@ limitations under the License.
         } \
     } while(0)
 
+#define memMacro_malloc_size(pointer, size) \
+    do { \
+        pointer = malloc(size); \
+        if (!pointer) { \
+            perror("malloc error!"); \
+            abort(); \
+        } \
+    } while(0)
+
+#define memMacro_malloc(...) memMacro_malloc_helper(__VA_ARGS__, memMacro_malloc_size, memMacro_malloc_known)(__VA_ARGS__)
+
+#define memMacro_realloc_helper(_1, _2, NAME, ...) NAME
+
 /**
  * realloc based on size of the dereferenced pointer, aborts if allocation fails.
 */
-#define memMacro_realloc(pointer) \
+#define memMacro_realloc_known(pointer) \
     do { \
         pointer = realloc(pointer, sizeof(*pointer)); \
         if (!pointer) { \
@@ -40,6 +58,17 @@ limitations under the License.
             abort(); \
         } \
     } while(0)
+
+#define memMacro_realloc_size(pointer, size) \
+    do { \
+        pointer = realloc(pointer, size); \
+        if (!pointer) { \
+            perror("realloc error!"); \
+            abort(); \
+        } \
+    } while(0)
+
+#define memMacro_realloc(...) memMacro_realloc_helper(__VA_ARGS__, memMacro_realloc_size, memMacro_realloc_known)(__VA_ARGS__)
 
 /**
  * calloc based on size of the dereferenced pointer, aborts if allocation fails.
