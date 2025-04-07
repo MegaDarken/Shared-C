@@ -65,6 +65,8 @@ struct charArray charArray_createFromString(const char *array)
     struct charArray val = charArray_create(1);
 
     charArray_setFromString(&val, array);
+
+    return val;
 }
 
 void charArray_setAll(struct charArray *var, const char value)
