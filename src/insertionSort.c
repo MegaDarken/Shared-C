@@ -22,7 +22,7 @@ void insertionSort(void* array, const size_t count, const size_t elementSize, in
 {
     for (size_t i = 1; i < count; i++)
     {
-        for (size_t j = i * elementSize; j > 0 && compar((array + j - elementSize), (array + j)); j -= elementSize)
+        for (size_t j = i * elementSize; j > 0 && compar((array + j - elementSize), (array + j)) > 0; j -= elementSize)
         {
             swap((array + j - elementSize), (array + j), elementSize);
         }
