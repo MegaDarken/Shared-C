@@ -47,6 +47,8 @@ add_library(${PROJECT_NAME}
     src/charArray.c
     src/clearInput.c
     src/clearInput.h
+    src/digits.c
+    src/digits.h
     src/fileUtility.c
     src/fileUtility.h
     src/floorPower.c
