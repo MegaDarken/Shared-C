@@ -8,7 +8,15 @@
 
 //See: https://en.m.wikipedia.org/wiki/Block_sort
 
-void mergeBuffered(void* array, const size_t left, const size_t mid, const size_t right, const size_t elementSize, void* buffer, int (* compar)(const void *, const void *))
+void mergeBuffered(
+    void* array,
+    const size_t left,
+    const size_t mid,
+    const size_t right,
+    const size_t elementSize,
+    void* buffer,
+    int (* compar)(const void *, const void *)
+)
 {
     if (compar(array + ((mid - 1) * elementSize), array + (mid * elementSize)) == -1)
     {
@@ -19,11 +27,11 @@ void mergeBuffered(void* array, const size_t left, const size_t mid, const size_
     size_t rightIndex = mid;
     size_t insert = 0;
 
-    while(leftIndex < mid && rightIndex < right)
+    while(insert < (right - left))//leftIndex < mid || rightIndex < right)
     {
         int comparisonValue = compar(array + (leftIndex * elementSize), array + (rightIndex * elementSize));
 
-        if (comparisonValue < 0)
+        if (comparisonValue <= 0)
         {
             memcpy(buffer + (insert * elementSize), array + (leftIndex * elementSize), elementSize);
             leftIndex++;
@@ -40,7 +48,14 @@ void mergeBuffered(void* array, const size_t left, const size_t mid, const size_
     memcpy(array + left, buffer, insert * elementSize);
 }
 
-void mergeInPlace(void* array, const size_t left, const size_t mid, const size_t right, const size_t elementSize, int (* compar)(const void *, const void *))
+void mergeInPlace(
+    void* array,
+    const size_t left,
+    const size_t mid,
+    const size_t right,
+    const size_t elementSize,
+    int (* compar)(const void *, const void *)
+)
 {
     if (compar(array + ((mid - 1) * elementSize), array + (mid * elementSize)) == -1)
     {
