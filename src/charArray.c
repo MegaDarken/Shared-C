@@ -101,10 +101,10 @@ void charArray_resize(struct charArray *var, const size_t count)
 
 void charArray_free(struct charArray *var)
 {
+    free(var->array);
+
     var->count = 0;
     var->size = 0;
-
-    free(var->array);
 
     allocatedCharArrayCount--;
 }
