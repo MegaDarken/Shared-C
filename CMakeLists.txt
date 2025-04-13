@@ -41,6 +41,8 @@ add_library(${PROJECT_NAME}
     ${SHAREDC_BUILD}
     src/abs.h
     src/arrayCheck.h
+    src/boxDrawing.c
+    src/boxDrawing.h
     src/characterSet.c
     src/characterSet.h
     src/charArray.c
