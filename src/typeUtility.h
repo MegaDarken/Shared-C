@@ -24,7 +24,7 @@ limitations under the License.
     default: 0xffffffffffffffff, \
     signed char: SCHAR_MAX, \
     unsigned char: UCHAR_MAX, \
-    char: CHAR_MAX, \
+    char: SCHAR_MAX, \
     short: SHRT_MAX, \
     unsigned short: USHRT_MAX, \
     int: INT_MAX, \
@@ -41,16 +41,16 @@ limitations under the License.
 #define typeMin(value) _Generic((value), \
     default: 0, \
     signed char: SCHAR_MIN, \
-    unsigned char: UCHAR_MIN, \
-    char: CHAR_MIN, \
+    unsigned char: 0, \
+    char: SCHAR_MIN, \
     short: SHRT_MIN, \
-    unsigned short: USHRT_MIN, \
+    unsigned short: 0, \
     int: INT_MIN, \
-    unsigned int: UINT_MIN, \
+    unsigned int: 0, \
     long: LONG_MIN, \
-    unsigned long: ULONG_MIN, \
+    unsigned long: 0, \
     long long: LLONG_MIN, \
-    unsigned long long: ULLONG_MIN, \
+    unsigned long long: 0, \
     float: FLT_MIN, \
     double: DBL_MIN, \
     long double: LDBL_MIN \
