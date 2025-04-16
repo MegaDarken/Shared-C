@@ -70,4 +70,30 @@ do { \
 
 #define rotate_left(...) rotate_left_helper(__VA_ARGS__, rotate_left_size, rotate_left_known)(__VA_ARGS__)
 
+//RIGHT
+#define rotate_right_helper(_1, _2, _3, _4, NAME, ...) NAME
+
+#define rotate_right_size(array, arrayCount, elementSize) \
+do { \
+    __typeof__ (array) _array = (array);\
+    __typeof__ (arrayCount) _arrayCount = (arrayCount);\
+    __typeof__ (elementSize) _elementSize = (elementSize);\
+    unsigned char _element_temp[_elementSize]; \
+    memcpy(_element_temp, _array + ((_arrayCount - 1) * _elementSize), _elementSize); \
+    memmove(_array + _elementSize, _array, (_arrayCount - 1) * _elementSize); \
+    memcpy(_array, _element_temp, _elementSize); \
+} while(0)
+
+#define rotate_right_known(array, arrayCount) \
+do { \
+    __typeof__ (array) _array = (array);\
+    __typeof__ (arrayCount) _arrayCount = (arrayCount);\
+    unsigned char _element_temp[sizeof(*array)]; \
+    memcpy(_element_temp, &_array[_arrayCount - 1], sizeof(*array)); \
+    memmove(&_array[1], _array, (_arrayCount - 1) * sizeof(*array)); \
+    memcpy(_array, _element_temp, sizeof(*array)); \
+} while(0)
+
+#define rotate_right(...) rotate_right_helper(__VA_ARGS__, rotate_right_size, rotate_right_known)(__VA_ARGS__)
+
 #endif //__ROTATE__
