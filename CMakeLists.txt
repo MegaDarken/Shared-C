@@ -65,6 +65,8 @@ add_library(${PROJECT_NAME}
     src/memMacro.h
     src/merge.c
     src/merge.h
+    src/mergeSort.c
+    src/mergeSort.h
     src/midpoint.c
     src/midpoint.h
     src/rawRead.c
