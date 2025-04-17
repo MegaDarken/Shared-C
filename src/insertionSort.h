@@ -21,4 +21,6 @@ limitations under the License.
 
 void insertionSort(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *));
 
+void binaryInsertionSort(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *));
+
 #endif // __INSERTION_SORT__
