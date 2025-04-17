@@ -31,7 +31,7 @@ size_t binarySearch(void* array, const size_t count, const size_t elementSize, i
 
         if (comparValue < 0)
         {
-            right = index - 1;
+            right = index;
         }
         else if (comparValue > 0)
         {
