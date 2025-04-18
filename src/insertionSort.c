@@ -17,14 +17,26 @@ limitations under the License.
 #include "insertionSort.h"
 
 #include "swapping.h"
+#include "binarySearch.h"
+#include "rotate.h"
 
 void insertionSort(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *))
 {
     for (size_t i = 1; i < count; i++)
     {
-        for (size_t j = i * elementSize; j > 0 && compar((array + j - elementSize), (array + j)); j -= elementSize)
+        for (size_t j = i * elementSize; j > 0 && compar((array + j - elementSize), (array + j)) > 0; j -= elementSize)
         {
             swap((array + j - elementSize), (array + j), elementSize);
         }
+    }
+}
+
+void binaryInsertionSort(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *))
+{
+    for (size_t i = 1; i < count; i++)
+    {
+        size_t index = binarySearch( array, i + 1, elementSize, compar, array + (elementSize * i) );
+
+        rotate_right_size(array + (index * elementSize), 1 + i - index, elementSize);
     }
 }

@@ -103,10 +103,10 @@ void charArray_resize(struct charArray *var, const size_t count)
 
 void charArray_free(struct charArray *var)
 {
+    free(var->array);
+
     var->count = 0;
     var->size = 0;
-
-    free(var->array);
 
     allocatedCharArrayCount--;
 }
@@ -391,10 +391,10 @@ void charArray_fprint(FILE *stream, const struct charArray *var)
     
     for (size_t i = 0; i < (var->count - 1); i++)
     {
-        fprintf(stream, "%u,", var->array[i]);
+        fprintf(stream, "%hhu,", var->array[i]);
     }
 
-    fprintf(stream, "%u", var->array[var->count - 1]);
+    fprintf(stream, "%hhu", var->array[var->count - 1]);
 }
 
 void charArray_print(const struct charArray *var)

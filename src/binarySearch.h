@@ -14,13 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#ifndef __INSERTION_SORT__
-#define __INSERTION_SORT__
+#ifndef __BINARY_SEARCH__
+#define __BINARY_SEARCH__
 
-#include <stdlib.h>
+#include <stddef.h>
 
-void insertionSort(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *));
+size_t binarySearch(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *), const void* value);
 
-void binaryInsertionSort(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *));
-
-#endif // __INSERTION_SORT__
+#endif //__BINARY_SEARCH__
