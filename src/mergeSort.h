@@ -14,13 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#ifndef __INSERTION_SORT__
-#define __INSERTION_SORT__
+#ifndef __MERGE_SORT__
+#define __MERGE_SORT__
 
-#include <stdlib.h>
+#include <stddef.h>
 
-void insertionSort(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *));
+void mergeSort(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *));
 
-void binaryInsertionSort(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *));
+void mergeSort_inPlace(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *));
 
-#endif // __INSERTION_SORT__
+#endif //__MERGE_SORT__

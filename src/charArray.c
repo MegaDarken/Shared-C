@@ -65,6 +65,8 @@ struct charArray charArray_createFromString(const char *array)
     struct charArray val = charArray_create(1);
 
     charArray_setFromString(&val, array);
+
+    return val;
 }
 
 void charArray_setAll(struct charArray *var, const char value)
@@ -81,7 +83,7 @@ void charArray_set(struct charArray *var, const char *array, const size_t count)
 
 void charArray_setFromString(struct charArray *var, const char *array)
 {
-    charArray_set(var, array, stringConstexpr_length(array));
+    charArray_set(var, array, stringConstexpr_length(array) + 1);
 }
 
 void charArray_resize(struct charArray *var, const size_t count)
@@ -92,7 +94,7 @@ void charArray_resize(struct charArray *var, const size_t count)
 
     var->array = realloc(var->array, var->size);
 
-    if (!var->array)
+    if (!var->array && count != 0)
     {
         perror("Error reallocating memory for array!");
         abort();

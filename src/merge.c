@@ -8,44 +8,52 @@
 
 //See: https://en.m.wikipedia.org/wiki/Block_sort
 
-void mergeBuffered(
-    void* array,
-    const size_t left,
-    const size_t mid,
-    const size_t right,
+void merge(
+    void* leftArray,
+    const size_t leftCount,
+    void* rightArray,
+    const size_t rightCount,
     const size_t elementSize,
-    void* buffer,
-    int (* compar)(const void *, const void *)
+    void* dest,
+    int (* compar)(const void *, const void *
+)
 )
 {
-    if (compar(array + ((mid - 1) * elementSize), array + (mid * elementSize)) == -1)
-    {
-        return;
-    }
+    __UINT8_TYPE__ *bleftArray = (__UINT8_TYPE__ *)leftArray;
+    __UINT8_TYPE__ *brightArray = (__UINT8_TYPE__ *)rightArray;
 
-    size_t leftIndex = left;
-    size_t rightIndex = mid;
+    __UINT8_TYPE__ *bdest = (__UINT8_TYPE__ *)dest;
+
+    size_t leftIndex = 0;
+    size_t rightIndex = 0;
     size_t insert = 0;
 
-    while(insert < (right - left))//leftIndex < mid || rightIndex < right)
+    while(leftIndex < leftCount && rightIndex < rightCount)//insert <= (right - left) || 
     {
-        int comparisonValue = compar(array + (leftIndex * elementSize), array + (rightIndex * elementSize));
+        int comparisonValue = compar(&bleftArray[leftIndex * elementSize], &brightArray[rightIndex * elementSize]);
 
         if (comparisonValue <= 0)
         {
-            memcpy(buffer + (insert * elementSize), array + (leftIndex * elementSize), elementSize);
+            memcpy(&bdest[insert * elementSize], &bleftArray[leftIndex * elementSize], elementSize);
             leftIndex++;
         }
         else // (comparisonValue > 0)
         {
-            memcpy(buffer + (insert * elementSize), array + (rightIndex * elementSize), elementSize);
+            memcpy(&bdest[insert * elementSize], &brightArray[rightIndex * elementSize], elementSize);
             rightIndex++;
         }
 
         insert++;
     }
 
-    memcpy(array + left, buffer, insert * elementSize);
+    if(leftIndex < leftCount)
+    {
+        memcpy(&bdest[insert * elementSize], &bleftArray[leftIndex * elementSize], elementSize * ((leftCount - leftIndex)));
+    }
+    else if (rightIndex < rightCount)
+    {
+        memcpy(&bdest[insert * elementSize], &brightArray[rightIndex * elementSize], elementSize * ((rightCount - rightIndex)));
+    }
 }
 
 void mergeInPlace(
@@ -57,7 +65,7 @@ void mergeInPlace(
     int (* compar)(const void *, const void *)
 )
 {
-    if (compar(array + ((mid - 1) * elementSize), array + (mid * elementSize)) == -1)
+    if (compar(array + ((mid - 1) * elementSize), array + (mid * elementSize)) < 0)
     {
         return;
     }
@@ -75,7 +83,7 @@ void mergeInPlace(
             rightIndex = right - (rightIndex - leftIndex);
         }
 
-        leftIndex++;
+        leftIndex++;        
     }
 }
 

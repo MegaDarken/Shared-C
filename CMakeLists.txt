@@ -41,6 +41,9 @@ add_library(${PROJECT_NAME}
     ${SHAREDC_BUILD}
     src/abs.h
     src/arrayCheck.h
+    src/arrayMathUtility.h
+    src/binarySearch.c
+    src/binarySearch.h
     src/boxDrawing.c
     src/boxDrawing.h
     src/characterSet.c
@@ -62,6 +65,8 @@ add_library(${PROJECT_NAME}
     src/memMacro.h
     src/merge.c
     src/merge.h
+    src/mergeSort.c
+    src/mergeSort.h
     src/midpoint.c
     src/midpoint.h
     src/rawRead.c
