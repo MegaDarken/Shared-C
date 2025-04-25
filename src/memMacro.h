@@ -27,7 +27,7 @@ limitations under the License.
 */
 #define memMacro_malloc_known(pointer) \
     do { \
-        pointer = malloc(sizeof(*pointer)); \
+        pointer = (__typeof__(pointer))malloc(sizeof(*pointer)); \
         if (!pointer) { \
             perror("malloc error!"); \
             abort(); \
@@ -36,7 +36,7 @@ limitations under the License.
 
 #define memMacro_malloc_size(pointer, size) \
     do { \
-        pointer = malloc(size); \
+        pointer = (__typeof__(pointer))malloc(size); \
         if (!pointer) { \
             perror("malloc error!"); \
             abort(); \
@@ -52,7 +52,7 @@ limitations under the License.
 */
 #define memMacro_realloc_known(pointer) \
     do { \
-        pointer = realloc(pointer, sizeof(*pointer)); \
+        pointer = (__typeof__(pointer))realloc(pointer, sizeof(*pointer)); \
         if (!pointer) { \
             perror("realloc error!"); \
             abort(); \
@@ -61,7 +61,7 @@ limitations under the License.
 
 #define memMacro_realloc_size(pointer, size) \
     do { \
-        pointer = realloc(pointer, size); \
+        pointer = (__typeof__(pointer))realloc(pointer, size); \
         if (!pointer) { \
             perror("realloc error!"); \
             abort(); \
@@ -76,7 +76,7 @@ limitations under the License.
 #define memMacro_calloc(pointer, count) \
     do { \
         __typeof__ (count) _count = (count); \
-        pointer = calloc(_count, sizeof(*pointer)); \
+        pointer = (__typeof__(pointer))calloc(_count, sizeof(*pointer)); \
         if (!pointer) { \
             perror("calloc error!"); \
             abort(); \
@@ -89,7 +89,7 @@ limitations under the License.
 #define memMacro_mallocArray(pointer, count) \
     do { \
         __typeof__ (count) _count = (count); \
-        pointer = malloc(sizeof(*pointer) * _count); \
+        pointer = (__typeof__(pointer))malloc(sizeof(*pointer) * _count); \
         if (!pointer) { \
             perror("malloc array error!"); \
             abort(); \
@@ -102,7 +102,7 @@ limitations under the License.
 #define memMacro_reallocArray(pointer, count) \
     do { \
         __typeof__ (count) _count = (count); \
-        pointer = realloc(pointer, sizeof(*pointer) * _count); \
+        pointer = (__typeof__(pointer))realloc(pointer, sizeof(*pointer) * _count); \
         if (!pointer) { \
             perror("realloc array error!"); \
             abort(); \
