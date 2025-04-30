@@ -51,7 +51,7 @@ limitations under the License.
     unsigned long: 0, \
     long long: LLONG_MIN, \
     unsigned long long: 0, \
-    float: FLT_MIN, \
+    float: (-FLT_MAX - FLT_MIN), \
     double: DBL_MIN, \
     long double: LDBL_MIN \
 )
