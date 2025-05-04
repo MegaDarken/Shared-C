@@ -140,6 +140,18 @@ int charArray_equals(const struct charArray *first, const struct charArray *seco
     return 1;
 }
 
+int charArray_equalsc(const struct charArray *var, const char *charPointer, size_t charSize)
+{
+    if (var->size != charSize) return 0;
+
+    for (size_t i = 0; i < var->count; i++)
+    {
+        if (var->array[i] != charPointer[i]) return 0;
+    }
+
+    return 1;
+}
+
 int charArray_contains(const struct charArray *var, const char value)
 {
     for (size_t i = 0; i < var->count; i++)
