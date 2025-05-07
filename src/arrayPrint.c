@@ -95,3 +95,11 @@ void arrayPrint_fulonglong(FILE *stream, unsigned long long *array, size_t count
         fprintf(stream, "%llu,", array[i]);
     }
 }
+
+void arrayPrint_ffloat(FILE *stream, float *array, size_t count)
+{
+    for (size_t i = 0; i < count; i++)
+    {
+        fprintf(stream, "%f,", array[i]);
+    }
+}

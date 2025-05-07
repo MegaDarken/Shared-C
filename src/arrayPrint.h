@@ -49,4 +49,7 @@ void arrayPrint_flonglong(FILE *stream, long long *array, size_t count);
 void arrayPrint_fulonglong(FILE *stream, unsigned long long *array, size_t count);
 #define arrayPrint_ulonglong(array, count) arrayPrint_fulonglong(stdout, array, count)
 
+void arrayPrint_ffloat(FILE *stream, float *array, size_t count);
+#define arrayPrint_float(array, count) arrayPrint_ffloat(stdout, array, count)
+
 #endif //__ARRAY_PRINT__
