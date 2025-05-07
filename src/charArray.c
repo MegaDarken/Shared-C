@@ -180,7 +180,7 @@ int charArray_containsBw(const struct charArray *var, const char value)
 
 size_t charArray_hash(const struct charArray *var)
 {
-    return stringHash(var->array, var->size);
+    return stringHash(var->array, var->array[var->count - 1] == '\0' ? var->size - 1 : var->size);
 }
 
 size_t charArray_indicesOfValue(const struct charArray *var, size_t *buffer, const size_t bufferCount, const char value)
