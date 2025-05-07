@@ -103,3 +103,11 @@ void arrayPrint_ffloat(FILE *stream, float *array, size_t count)
         fprintf(stream, "%f,", array[i]);
     }
 }
+
+void arrayPrint_fdouble(FILE *stream, double *array, size_t count)
+{
+    for (size_t i = 0; i < count; i++)
+    {
+        fprintf(stream, "%f,", array[i]);
+    }
+}
