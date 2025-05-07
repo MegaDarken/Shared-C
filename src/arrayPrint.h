@@ -55,4 +55,22 @@ void arrayPrint_ffloat(FILE *stream, float *array, size_t count);
 void arrayPrint_fdouble(FILE *stream, double *array, size_t count);
 #define arrayPrint_double(array, count) arrayPrint_fdouble(stdout, array, count)
 
+#define farrayPrint(stream, array, count) _Generic((*array), \
+    char: arrayPrint_fchar(stream, array, count), \
+    unsigned char: arrayPrint_fuchar(stream, array, count), \
+    short: arrayPrint_fshort(stream, array, count), \
+    unsigned short: arrayPrint_fushort(stream, array, count), \
+    int: arrayPrint_fint(stream, array, count), \
+    unsigned int: arrayPrint_fuint(stream, array, count), \
+    long: arrayPrint_flong(stream, array, count), \
+    unsigned long: arrayPrint_fulong(stream, array, count), \
+    long long: arrayPrint_flonglong(stream, array, count), \
+    unsigned long long: arrayPrint_fulonglong(stream, array, count), \
+    float: arrayPrint_ffloat(stream, array, count), \
+    double: arrayPrint_fdouble(stream, array, count), \
+    default: perror("ERR:farrayPrint unknown type.") \
+    )
+
+#define arrayPrint(array, count) farrayPrint(stdout, array, count)
+
 #endif //__ARRAY_PRINT__
