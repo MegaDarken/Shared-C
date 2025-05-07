@@ -223,9 +223,13 @@ void charArray_resizeStringToLastInstance(struct charArray *var, int ch)
 
 void charArray_catString(struct charArray *var, const char *string)
 {
-    if(!charArray_containsBw(var, '\0')) return;
+    if(!charArray_containsBw(var, '\0'))
+    {
+        perror("ERR:catString var does not terminate.");
+        return;
+    }
 
-    size_t newCount = var->count + stringConstexpr_length(string) - 1;
+    size_t newCount = var->count + stringConstexpr_length(string);
 
     charArray_resize(var, newCount);
 
