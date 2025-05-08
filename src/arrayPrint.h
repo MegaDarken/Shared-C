@@ -19,6 +19,10 @@ limitations under the License.
 
 #include <stdio.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif //__cplusplus
+
 void arrayPrint_fchar(FILE *stream, char *array, size_t count);
 #define arrayPrint_char(array, count) arrayPrint_fchar(stdout, array, count)
 
@@ -72,5 +76,9 @@ void arrayPrint_fdouble(FILE *stream, double *array, size_t count);
     )
 
 #define arrayPrint(array, count) farrayPrint(stdout, array, count)
+
+#ifdef __cplusplus
+}
+#endif //__cplusplus
 
 #endif //__ARRAY_PRINT__
