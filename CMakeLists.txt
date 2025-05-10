@@ -60,6 +60,8 @@ add_library(${PROJECT_NAME}
     src/fileUtility.h
     src/floorPower.c
     src/floorPower.h
+    src/heapSort.c
+    src/heapSort.h
     src/insertionSort.c
     src/insertionSort.h
     src/loopUtility.h
