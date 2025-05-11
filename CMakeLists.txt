@@ -46,6 +46,8 @@ add_library(${PROJECT_NAME}
     src/arrayPrint.h
     src/binarySearch.c
     src/binarySearch.h
+    src/binarySort.c
+    src/binarySort.h
     src/boxDrawing.c
     src/boxDrawing.h
     src/characterSet.c
