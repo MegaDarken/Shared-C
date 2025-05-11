@@ -17,7 +17,7 @@ limitations under the License.
 #ifndef MATH_UTILITY_
 #define MATH_UTILITY_
 
-#include "abs.h"
+#include <stdlib.h>
 
 #undef max
 #define max(a,b) \
