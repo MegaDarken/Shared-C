@@ -21,6 +21,9 @@ limitations under the License.
 #include "merge.h"
 #include "memMacro.h"
 
+/**
+ * Actually an iterative mergesort for log(n) less memory usage.
+ */
 void mergeSort(void *array, const size_t count, const size_t elementSize, int (*compar)(const void *, const void *))
 {
     __UINT8_TYPE__ *barray = (__UINT8_TYPE__ *)array;
@@ -65,6 +68,31 @@ void mergeSort(void *array, const size_t count, const size_t elementSize, int (*
     free(buffer);
 }
 
+/**
+ * Actually an iterative mergesort for log(n) less memory usage.
+ */
+// void mergeSort_inPlace(void *array, const size_t count, const size_t elementSize, int (*compar)(const void *, const void *))
+// {
+//     size_t i = 2;
+
+//     for (; i < count; i = i << 1)
+//     {
+//         size_t j = 0;
+
+//         for (; j + i < count; j += i)
+//         {
+//             mergeInPlace(array, j, j + (i >> 1), j + i, elementSize, compar);
+//         }
+
+//         mergeInPlace(array, j, j + (i >> 1), count, elementSize, compar);
+//     }
+
+//     mergeInPlace(array, 0, i >> 1, count, elementSize, compar); // See if you can get the loop to occur once more rather than having to call this again.
+// }
+
+/**
+ * Actually an iterative mergesort for log(n) less memory usage.
+ */
 void mergeSort_inPlace(void *array, const size_t count, const size_t elementSize, int (*compar)(const void *, const void *))
 {
     size_t i = 2;
@@ -75,11 +103,11 @@ void mergeSort_inPlace(void *array, const size_t count, const size_t elementSize
 
         for (; j + i < count; j += i)
         {
-            mergeInPlace(array, j, j + (i >> 1), j + i, elementSize, compar);
+            mergeRotating(array, j, j + (i >> 1), j + i, elementSize, compar);
         }
 
-        mergeInPlace(array, j, j + (i >> 1), count, elementSize, compar);
+        mergeRotating(array, j, j + (i >> 1), count, elementSize, compar);
     }
 
-    mergeInPlace(array, 0, i >> 1, count, elementSize, compar); // See if you can get the loop to occur once more rather than having to call this again.
+    mergeRotating(array, 0, i >> 1, count, elementSize, compar); // See if you can get the loop to occur once more rather than having to call this again.
 }
