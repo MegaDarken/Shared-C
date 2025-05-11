@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "swapping.h"
 #include "rotate.h"
@@ -84,6 +85,39 @@ void mergeInPlace(
         }
 
         leftIndex++;        
+    }
+}
+
+void mergeRotating(
+    void* array,
+    const size_t left,
+    const size_t mid,
+    const size_t right,
+    const size_t elementSize,
+    int (* compar)(const void *, const void *)
+)
+{
+    if (compar(array + ((mid - 1) * elementSize), array + (mid * elementSize)) < 0)
+    {
+        return;
+    }
+
+    size_t leftIndex = left;
+    size_t rightIndex = mid;
+
+    while(leftIndex < rightIndex && rightIndex < right)
+    {
+        int comparisonValue = compar(array + (leftIndex * elementSize), array + (rightIndex * elementSize));
+
+        if (comparisonValue > 0)
+        {
+            rotate_right_size(array + ((leftIndex) * elementSize), 1 + (rightIndex - leftIndex), elementSize);
+            rightIndex++;
+        }
+        else
+        {
+            leftIndex++;
+        }        
     }
 }
 
