@@ -22,6 +22,10 @@ limitations under the License.
 #include "digits.h"
 #include "swapping.h"
 #include "memMacro.h"
+#include "rotate.h"
+
+#include "arrayPrint.h"
+#include "../../barDrawing.h"
 
 void binarySort_lsd(void* array, const size_t count, const size_t elementSize, int (* eval)(const void *))
 {
@@ -77,6 +81,56 @@ void binarySort_lsd(void* array, const size_t count, const size_t elementSize, i
     }
 
     free(buffer);
+}
+
+void binarySort_lsd_inPlace(void* array, const size_t count, const size_t elementSize, int (* eval)(const void *))
+{
+    int max = INT_MIN;
+
+    void* arrayPtr = array;
+    void* endPtr = array + (elementSize * count);
+
+    for (size_t i = 0; i < count; i++)
+    {
+        max = max(max, eval(arrayPtr));
+        arrayPtr += elementSize;
+    }
+
+    unsigned int mask = 1;
+    unsigned int digits = digits_baseTwo_uint(max);
+
+    for (size_t i = 0; i < digits; i++)
+    {
+        arrayPtr = array;
+        size_t currentCount = 0;
+        void* lowPtr = array;
+        size_t lowCount = 0;
+        size_t highCount = 0;
+
+        while (arrayPtr < endPtr)
+        {
+            if (eval(arrayPtr) & mask)
+            {
+                highCount++;
+            }
+            else
+            {
+                if (highCount > 0) 
+                {
+                    rotate_right_size(lowPtr, highCount + 1, elementSize);
+                }
+                
+                lowCount++;
+                lowPtr += elementSize;
+            }
+
+            arrayPtr += elementSize;
+            currentCount++;
+        }
+        
+        mask = mask << 1;
+        
+    }
 }
 
 // void binarySort_lsd_inPlace(void* array, const size_t count, const size_t elementSize, int (* eval)(const void *))

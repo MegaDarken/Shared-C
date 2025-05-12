@@ -20,6 +20,7 @@ limitations under the License.
 #include <stddef.h>
 
 void binarySort_lsd(void* array, const size_t count, const size_t elementSize, int (* eval)(const void *));
+void binarySort_lsd_inPlace(void* array, const size_t count, const size_t elementSize, int (* eval)(const void *));
 
 void binarySort_msd_below(void* array, const size_t count, const size_t elementSize, int (* eval)(const void *), unsigned int mask);
 void binarySort_msd(void* array, const size_t count, const size_t elementSize, int (* eval)(const void *));
