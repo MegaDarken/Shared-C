@@ -49,10 +49,17 @@ unsigned int digits_baseSixteen_uint(unsigned int val);
 unsigned int digits_baseSixteen_ul(unsigned long val);
 unsigned int digits_baseSixteen_ull(unsigned long long val);
 
+unsigned int digits_baseSixteen_int(int val);
+unsigned int digits_baseSixteen_l(long val);
+unsigned int digits_baseSixteen_ll(long long val);
+
 #define digits_baseSixteen(val) _Generic((val), \
     unsigned int: digits_baseSixteen_uint(val), \
     unsigned long: digits_baseSixteen_ul(val), \
     unsigned long long: digits_baseSixteen_ull(val) \
+    int: digits_baseSixteen_int(val), \
+    long: digits_baseSixteen_l(val), \
+    long long: digits_baseSixteen_ll(val) \
     )
 
 

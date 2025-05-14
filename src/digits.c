@@ -107,6 +107,24 @@ unsigned int digits_baseSixteen_ull(unsigned long long val)
     return digits + (val >= DIGITS_POWERSOFSIXTEEN[digits]);
 }
 
+unsigned int digits_baseSixteen_int(int val)
+{
+    unsigned int digits = digits_baseTwo_int(val) >> 2;
+    return digits + (val >= DIGITS_POWERSOFSIXTEEN[digits]);
+}
+
+unsigned int digits_baseSixteen_l(long val)
+{
+    unsigned int digits = digits_baseTwo_l(val) >> 2;
+    return digits + (val >= DIGITS_POWERSOFSIXTEEN[digits]);
+}
+
+unsigned int digits_baseSixteen_ll(long long val)
+{
+    unsigned int digits = digits_baseTwo_ll(val) >> 2;
+    return digits + (val >= DIGITS_POWERSOFSIXTEEN[digits]);
+}
+
 #ifdef __cplusplus
 }
 #endif //__cplusplus
