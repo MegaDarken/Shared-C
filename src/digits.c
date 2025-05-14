@@ -4,6 +4,10 @@
 #define DIGITS_UL (sizeof(unsigned long) << 3)
 #define DIGITS_ULL (sizeof(unsigned long long) << 3)
 
+#define DIGITS_SINT_MASK __INT_MAX__
+#define DIGITS_SL_MASK __LONG_MAX__
+#define DIGITS_SLL_MASK __LONG_LONG_MAX__
+
 #ifdef __cplusplus
 inline constexpr {
 #endif //__cplusplus
@@ -23,6 +27,21 @@ unsigned int digits_baseTwo_ul(unsigned long val)
 unsigned int digits_baseTwo_ull(unsigned long long val)
 {
     return val ? DIGITS_ULL - __builtin_clzll(val) : 0;
+}
+
+unsigned int digits_baseTwo_int(int val)
+{
+    return digits_baseTwo_uint(val & DIGITS_SINT_MASK);
+}
+
+unsigned int digits_baseTwo_l(long val)
+{
+    return digits_baseTwo_ul(val & DIGITS_SL_MASK);
+}
+
+unsigned int digits_baseTwo_ll(long long val)
+{
+    return digits_baseTwo_ull(val & DIGITS_SLL_MASK);
 }
 
 //BASE TEN (10)

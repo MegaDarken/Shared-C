@@ -11,10 +11,17 @@ unsigned int digits_baseTwo_uint(unsigned int val);
 unsigned int digits_baseTwo_ul(unsigned long val);
 unsigned int digits_baseTwo_ull(unsigned long long val);
 
+unsigned int digits_baseTwo_int(int val);
+unsigned int digits_baseTwo_l(long val);
+unsigned int digits_baseTwo_ll(long long val);
+
 #define digits_baseTwo(val) _Generic((val), \
     unsigned int: digits_baseTwo_uint(val), \
     unsigned long: digits_baseTwo_ul(val), \
     unsigned long long: digits_baseTwo_ull(val) \
+    int: digits_baseTwo_int(val), \
+    long: digits_baseTwo_l(val), \
+    long long: digits_baseTwo_ll(val) \
     )
 
 //BASE TEN (10)
