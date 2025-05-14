@@ -67,6 +67,24 @@ unsigned int digits_baseTen_ull(unsigned long long val)
     return digits + (val >= DIGITS_POWERSOFTEN[digits]);
 }
 
+unsigned int digits_baseTen_int(int val)
+{
+    unsigned int digits = DIGITS_LOGTEN_POWERSOFTWO[digits_baseTwo_int(val)];
+    return digits + (val >= DIGITS_POWERSOFTEN[digits]);
+}
+
+unsigned int digits_baseTen_l(long val)
+{
+    unsigned int digits = DIGITS_LOGTEN_POWERSOFTWO[digits_baseTwo_l(val)];
+    return digits + (val >= DIGITS_POWERSOFTEN[digits]);
+}
+
+unsigned int digits_baseTen_ll(long long val)
+{
+    unsigned int digits = DIGITS_LOGTEN_POWERSOFTWO[digits_baseTwo_ll(val)];
+    return digits + (val >= DIGITS_POWERSOFTEN[digits]);
+}
+
 //BASE SIXTEEN (16)
 
 const unsigned long long DIGITS_POWERSOFSIXTEEN[20] = {0x1ull, 0x10ull, 0x100ull, 0x1000ull, 0x10000ull, 0x100000ull, 0x1000000ull, 0x10000000ull, 0x100000000ull, 0x1000000000ull, 0x10000000000ull, 0x100000000000ull, 0x1000000000000ull, 0x10000000000000ull, 0x100000000000000ull, 0x1000000000000000ull};

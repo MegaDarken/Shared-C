@@ -30,10 +30,17 @@ unsigned int digits_baseTen_uint(unsigned int val);
 unsigned int digits_baseTen_ul(unsigned long val);
 unsigned int digits_baseTen_ull(unsigned long long val);
 
+unsigned int digits_baseTen_int(int val);
+unsigned int digits_baseTen_l(long val);
+unsigned int digits_baseTen_ll(long long val);
+
 #define digits_baseTen(val) _Generic((val), \
     unsigned int: digits_baseTen_uint(val), \
     unsigned long: digits_baseTen_ul(val), \
     unsigned long long: digits_baseTen_ull(val) \
+    int: digits_baseTen_int(val), \
+    long: digits_baseTen_l(val), \
+    long long: digits_baseTen_ll(val) \
     )
 
 //BASE SIXTEEN (16)
