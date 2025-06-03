@@ -18,7 +18,7 @@ unsigned int digits_baseTwo_ll(long long val);
 #define digits_baseTwo(val) _Generic((val), \
     unsigned int: digits_baseTwo_uint(val), \
     unsigned long: digits_baseTwo_ul(val), \
-    unsigned long long: digits_baseTwo_ull(val) \
+    unsigned long long: digits_baseTwo_ull(val), \
     int: digits_baseTwo_int(val), \
     long: digits_baseTwo_l(val), \
     long long: digits_baseTwo_ll(val) \
@@ -37,7 +37,7 @@ unsigned int digits_baseTen_ll(long long val);
 #define digits_baseTen(val) _Generic((val), \
     unsigned int: digits_baseTen_uint(val), \
     unsigned long: digits_baseTen_ul(val), \
-    unsigned long long: digits_baseTen_ull(val) \
+    unsigned long long: digits_baseTen_ull(val), \
     int: digits_baseTen_int(val), \
     long: digits_baseTen_l(val), \
     long long: digits_baseTen_ll(val) \
@@ -56,7 +56,7 @@ unsigned int digits_baseSixteen_ll(long long val);
 #define digits_baseSixteen(val) _Generic((val), \
     unsigned int: digits_baseSixteen_uint(val), \
     unsigned long: digits_baseSixteen_ul(val), \
-    unsigned long long: digits_baseSixteen_ull(val) \
+    unsigned long long: digits_baseSixteen_ull(val), \
     int: digits_baseSixteen_int(val), \
     long: digits_baseSixteen_l(val), \
     long long: digits_baseSixteen_ll(val) \
