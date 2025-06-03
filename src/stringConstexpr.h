@@ -23,8 +23,9 @@ limitations under the License.
 // extern "C" {
 // #endif //__cplusplus
 
+inline static 
 #ifdef __cplusplus
-inline static constexpr
+constexpr
 #endif //__cplusplus
 size_t stringConstexpr_length(const char* string)
 {
@@ -39,8 +40,9 @@ size_t stringConstexpr_length(const char* string)
     for (; *_character; ++_character); \
     (_character - _string); })
 
+inline static 
 #ifdef __cplusplus
-inline static constexpr
+constexpr
 #endif //__cplusplus
 size_t stringConstexpr_match(const char* string, const char match)
 {
