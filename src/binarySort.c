@@ -25,7 +25,6 @@ limitations under the License.
 #include "rotate.h"
 
 #include "arrayPrint.h"
-#include "../../barDrawing.h"
 
 void binarySort_lsd(void* array, const size_t count, const size_t elementSize, int (* eval)(const void *))
 {
