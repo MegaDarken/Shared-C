@@ -33,8 +33,9 @@ limitations under the License.
 
 #define stringHash_helper(_1, _2, NAME, ...) NAME
 
+inline static
 #ifdef __cplusplus
-inline static constexpr
+constexpr
 #endif //__cplusplus
 __UINT64_TYPE__ stringHash_size(const char *string, size_t stringSize)
 {
@@ -48,8 +49,9 @@ __UINT64_TYPE__ stringHash_size(const char *string, size_t stringSize)
     return hash;
 }
 
+inline static
 #ifdef __cplusplus
-inline static constexpr
+constexpr
 #endif //__cplusplus
 __UINT64_TYPE__ stringHash_nullTerminated(const char* string)
 {
