@@ -35,6 +35,8 @@ struct charArray charArray_clone(const struct charArray *var);
 int charArray_equals(const struct charArray *first, const struct charArray *second);
 int charArray_equalsc(const struct charArray *var, const char *charPointer, size_t charSize);
 
+int charArray_isZero(const struct charArray *var);
+
 int charArray_contains(const struct charArray *var, const char value);
 int charArray_containsBw(const struct charArray *var, const char value);
 

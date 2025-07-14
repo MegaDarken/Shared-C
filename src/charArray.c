@@ -152,6 +152,11 @@ int charArray_equalsc(const struct charArray *var, const char *charPointer, size
     return 1;
 }
 
+int charArray_isZero(const struct charArray *var)
+{
+    return var->count == 0 && var->size == 0 && var->array == NULL;
+}
+
 int charArray_contains(const struct charArray *var, const char value)
 {
     for (size_t i = 0; i < var->count; i++)
