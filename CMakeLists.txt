@@ -40,6 +40,8 @@ endif()
 add_library(${PROJECT_NAME}
     ${SHAREDC_BUILD}
     src/abs.h
+    src/ansiCursor.c
+    src/ansiCursor.h
     src/arrayCheck.h
     src/arrayMathUtility.h
     src/arrayPrint.c
@@ -56,6 +58,8 @@ add_library(${PROJECT_NAME}
     src/charArray.c
     src/clearInput.c
     src/clearInput.h
+    src/consoleProcessing.c
+    src/consoleProcessing.h
     src/digits.c
     src/digits.h
     src/fileUtility.c
@@ -83,6 +87,8 @@ add_library(${PROJECT_NAME}
     src/spansUtility.h
     src/stringConstexpr.h
     src/stringHash.h
+    src/substringUtility.c
+    src/substringUtility.h
     src/swapping.h
     src/typeUtility.h
     src/valRead.c
