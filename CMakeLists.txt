@@ -19,7 +19,7 @@ project( Shared-C
     LANGUAGES C
 )
 
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD 99)
 
 set(SHAREDC_BUILD)
 
