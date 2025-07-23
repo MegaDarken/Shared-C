@@ -54,6 +54,8 @@ add_library(${PROJECT_NAME}
     src/boxDrawing.h
     src/characterSet.c
     src/characterSet.h
+    src/charArray_substringUtility.c
+    src/charArray_substringUtility.h
     src/charArray.c
     src/charArray.c
     src/clearInput.c
