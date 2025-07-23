@@ -46,7 +46,7 @@ size_t substringUtility_count(const char* string, const size_t stringSize, const
 /**
  * Presumes Var string has been allocated enough space already.
 */
-size_t substringUtility_replace(char* string, const size_t stringSize, const char* foundSubstring, const size_t foundSubstringSize, const char* replacementSubstring, const size_t replacementSubstringSize)
+void substringUtility_replace(char* string, const size_t stringSize, const char* foundSubstring, const size_t foundSubstringSize, const char* replacementSubstring, const size_t replacementSubstringSize)
 {
     const size_t maxPossibleInstances = stringSize / foundSubstringSize;
 

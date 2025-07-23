@@ -19,11 +19,23 @@ limitations under the License.
 
 #include <stddef.h>
 
+/**
+ * @param string
+ * @param stringSize
+ * @param substring
+ * @param substringSize
+ */
 size_t substringUtility_count(const char* string, const size_t stringSize, const char* substring, const size_t substringSize);
 
 /**
  * Presumes Var string has been allocated enough space already.
+ * @param string
+ * @param stringSize
+ * @param foundSubstring
+ * @param foundSubstringSize
+ * @param replacementSubstring
+ * @param replacementSubstringSize
 */
-size_t substringUtility_replace(char* string, const size_t stringSize, const char* foundSubstring, const size_t foundSubstringSize, const char* replacementSubstring, const size_t replacementSubstringSize);
+void substringUtility_replace(char* string, const size_t stringSize, const char* foundSubstring, const size_t foundSubstringSize, const char* replacementSubstring, const size_t replacementSubstringSize);
 
 #endif //__SUBSTRING_UTILITY__
