@@ -31,7 +31,7 @@ size_t substringUtility_count(const char* string, const size_t stringSize, const
         if (currentPointer != NULL)
         {
             output++;
-            currentPointer += substringSize;
+            currentPointer += substringSize - 1;
         }
         else
         {
@@ -58,11 +58,12 @@ size_t substringUtility_replace(char* string, const size_t stringSize, const cha
 
         if (currentPointer != NULL)
         {
-            memmove(currentPointer + replacementSubstringSize,
-            currentPointer + foundSubstringSize,
-            stringSize - (foundSubstringSize + currentPointer - string));
+            memmove(currentPointer + replacementSubstringSize - 1,
+                currentPointer + foundSubstringSize - 1,
+                stringSize - (foundSubstringSize - 1 + (currentPointer - string))
+            );
 
-            memcpy(currentPointer, replacementSubstring, replacementSubstringSize);
+            memcpy(currentPointer, replacementSubstring, replacementSubstringSize - 1);
 
             currentPointer += replacementSubstringSize;
         }
