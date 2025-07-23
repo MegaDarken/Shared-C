@@ -31,14 +31,14 @@ void charArray_substringUtility_replace(struct charArray *var, const char* found
 
     size_t newSize = var->size + ((replacementSubstringSize - 1) * foundCount) - ((foundSubstringSize - 1) * foundCount);
 
-    if (foundSubstring < replacementSubstringSize)
+    if (foundSubstringSize < replacementSubstringSize)
     {
         charArray_resize(var, newSize);
     }
 
     substringUtility_replace(var->array, var->size, foundSubstring, foundSubstringSize, replacementSubstring, replacementSubstringSize);
 
-    if (foundSubstring > replacementSubstringSize)
+    if (foundSubstringSize > replacementSubstringSize)
     {
         charArray_resize(var, newSize);
     }
