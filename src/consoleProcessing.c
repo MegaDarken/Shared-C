@@ -16,6 +16,7 @@ limitations under the License.
 
 #include "consoleProcessing.h"
 
+#include <stdio.h>
 
 #ifdef _WIN32 //_WIN16 ||
 
