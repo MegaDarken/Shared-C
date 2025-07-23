@@ -22,7 +22,7 @@ size_t substringUtility_count(const char* string, const size_t stringSize, const
 {
     size_t output = 0;
 
-    char* currentPointer = string;
+    const char* currentPointer = string;
 
     while (currentPointer < (string + stringSize))
     {
