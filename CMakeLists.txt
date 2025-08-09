@@ -46,6 +46,8 @@ src/hashTable/hashTable.h
 src/hashTable/hashTableEntry.c
 src/hashTable/hashTableEntry.h
     src/abs.h
+    src/ansiColor.c
+    src/ansiColor.h
     src/ansiCursor.c
     src/ansiCursor.h
     src/arrayCheck.h
