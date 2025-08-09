@@ -39,6 +39,12 @@ endif()
 
 add_library(${PROJECT_NAME}
     ${SHAREDC_BUILD}
+src/hashTable/charArrayHashTable.c
+src/hashTable/charArrayHashTable.h
+src/hashTable/hashTable.c
+src/hashTable/hashTable.h
+src/hashTable/hashTableEntry.c
+src/hashTable/hashTableEntry.h
     src/abs.h
     src/ansiCursor.c
     src/ansiCursor.h
