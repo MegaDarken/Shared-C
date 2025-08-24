@@ -1,11 +1,29 @@
+#CMake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+CMakeUserPresets.json
+
+build/
+
 # Prerequisites
 *.d
 
 # Object files
 *.o
 *.ko
-*.obj
+# *.obj # What about wavefront
 *.elf
+*.slo
+*.lo
 
 # Linker output
 *.ilk
@@ -21,6 +39,7 @@
 *.a
 *.la
 *.lo
+*.lai
 
 # Shared objects (inc. Windows DLLs)
 *.dll
@@ -41,6 +60,10 @@
 *.su
 *.idb
 *.pdb
+
+# Fortran module files
+*.mod
+*.smod
 
 # Kernel Module Compile Results
 *.mod*
