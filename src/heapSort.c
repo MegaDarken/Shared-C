@@ -96,6 +96,11 @@ void heapSort_heapify(void* array, const size_t count, const size_t elementSize,
 
 void heapSort(void* array, const size_t count, const size_t elementSize, int (* compar)(const void *, const void *))
 {
+    if (count <= 1)
+    {
+        return;
+    }
+
     heapSort_heapify(array, count, elementSize, compar);
 
     size_t end = count;
