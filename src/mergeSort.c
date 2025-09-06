@@ -26,6 +26,11 @@ limitations under the License.
  */
 void mergeSort(void *array, const size_t count, const size_t elementSize, int (*compar)(const void *, const void *))
 {
+    if (count <= 1)
+    {
+        return;
+    }
+
     __UINT8_TYPE__ *barray = (__UINT8_TYPE__ *)array;
     __UINT8_TYPE__ *buffer;
 
@@ -58,7 +63,7 @@ void mergeSort(void *array, const size_t count, const size_t elementSize, int (*
                 compar);
         }
 
-        memcpy(barray, buffer, count * elementSize);
+        memcpy(barray, buffer, j * elementSize);
     }
 
     merge(barray, (i >> 1), &barray[(i >> 1) * elementSize], count - ((i >> 1)), elementSize, buffer, compar);
