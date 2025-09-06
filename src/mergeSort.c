@@ -32,7 +32,7 @@ void mergeSort(void *array, const size_t count, const size_t elementSize, int (*
     }
 
     __UINT8_TYPE__ *barray = (__UINT8_TYPE__ *)array;
-    __UINT8_TYPE__ *buffer;
+    __UINT8_TYPE__ *buffer = 0x0;
 
     memMacro_malloc_size(buffer, count * elementSize);
 
@@ -61,6 +61,8 @@ void mergeSort(void *array, const size_t count, const size_t elementSize, int (*
                 elementSize,
                 &buffer[j * elementSize],
                 compar);
+
+            j = count;
         }
 
         memcpy(barray, buffer, j * elementSize);
