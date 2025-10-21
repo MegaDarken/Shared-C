@@ -237,7 +237,7 @@ void hashTable_forEach(struct hashTable *var, void (*callback)(void *))
 
         while (entry != NULL)
         {
-            callback(entry->value);
+            if (entry->value != NULL) callback(entry->value);
             entry = entry->next;
         }
     }
