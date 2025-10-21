@@ -26,8 +26,13 @@ limitations under the License.
  */
 void mergeSort(void *array, const size_t count, const size_t elementSize, int (*compar)(const void *, const void *))
 {
+    if (count <= 1)
+    {
+        return;
+    }
+
     __UINT8_TYPE__ *barray = (__UINT8_TYPE__ *)array;
-    __UINT8_TYPE__ *buffer;
+    __UINT8_TYPE__ *buffer = 0x0;
 
     memMacro_malloc_size(buffer, count * elementSize);
 
@@ -56,9 +61,11 @@ void mergeSort(void *array, const size_t count, const size_t elementSize, int (*
                 elementSize,
                 &buffer[j * elementSize],
                 compar);
+
+            j = count;
         }
 
-        memcpy(barray, buffer, count * elementSize);
+        memcpy(barray, buffer, j * elementSize);
     }
 
     merge(barray, (i >> 1), &barray[(i >> 1) * elementSize], count - ((i >> 1)), elementSize, buffer, compar);
