@@ -72,6 +72,8 @@ src/hashTable/hashTableEntry.h
     src/consoleProcessing.h
     src/digits.c
     src/digits.h
+    src/fileCharArray.c
+    src/fileCharArray.c
     src/fileUtility.c
     src/fileUtility.h
     src/floorPower.c
