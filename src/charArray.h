@@ -57,6 +57,8 @@ void charArray_toupper(struct charArray *var);
 void charArray_trimspace(struct charArray *var);
 void charArray_removespace(struct charArray *var);
 
+void charArray_ensureNullTerminated(struct charArray* var);
+
 void charArray_uniqueValuesDest(struct charArray *dest, struct charArray *var);
 size_t charArray_uniqueValuesCount(struct charArray *var);
 

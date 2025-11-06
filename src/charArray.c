@@ -306,6 +306,14 @@ void charArray_removespace(struct charArray *var)
     charArray_resize(var, toIndex);
 }
 
+void charArray_ensureNullTerminated(struct charArray* var)
+{
+    if (var->array[var->count - 1] == '\0') return;
+
+    charArray_resize(var, var->count + 1);
+    var->array[var->count-1] = '\0';
+}
+
 void charArray_uniqueValuesDest(struct charArray *dest, struct charArray *var)
 {
     char uniqueValues[var->count];
