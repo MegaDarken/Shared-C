@@ -208,6 +208,15 @@ void fileUtility_afterComment(int reference, FILE* filePointer)
     ungetc(value, filePointer);
 }
 
+size_t fileUtility_size(FILE* filePointer)
+{
+    size_t currentOffset = ftell(filePointer);
+    fseek(filePointer, 0, SEEK_END);
+    size_t fileSize = ftell(filePointer);
+    fseek(filePointer, currentOffset, SEEK_SET);
+    return fileSize;
+}
+
 #ifdef __cplusplus
 }
 #endif //__cplusplus

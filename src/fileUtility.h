@@ -41,6 +41,8 @@ int fileUtility_upcoming(FILE* filePointer);
 int fileUtility_nextAfterComment(int reference, FILE* filePointer);
 void fileUtility_afterComment(int reference, FILE* filePointer);
 
+size_t fileUtility_size(FILE* filePointer);
+
 #ifdef __cplusplus
 }
 #endif //__cplusplus
