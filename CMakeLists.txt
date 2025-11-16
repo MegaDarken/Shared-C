@@ -66,6 +66,8 @@ src/hashTable/hashTableEntry.h
     src/charArray_substringUtility.h
     src/charArray.c
     src/charArray.h
+    src/charMenu.c
+    src/charMenu.h
     src/clearInput.c
     src/clearInput.h
     src/consoleProcessing.c
