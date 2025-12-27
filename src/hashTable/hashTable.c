@@ -143,7 +143,9 @@ void hashTable_putEntry(struct hashTable *var, struct hashTableEntry *entry)
         {
             if (charArray_equals(&entry->key, &gottenHashTableEntry->key))
             {
-                perror("Putting hashTable entry that already exists, overriding.");
+                printf("Putting hashTable entry that already exists:\"");
+                charArray_printAsChar(&entry->key);
+                printf("\", overriding.\n");
 
                 hashTableEntry_setValueSize(gottenHashTableEntry, entry->value, entry->valueSize);
                 hashTableEntry_free(entry);
