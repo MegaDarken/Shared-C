@@ -19,6 +19,7 @@ void charArray_createDest(struct charArray *dest);
 void charArray_createDestWithInitialValue(struct charArray *dest, const char initialValue);
 struct charArray charArray_createWithInitialValue(const size_t count, const char initialValue);
 struct charArray charArray_create(const size_t count);
+struct charArray charArray_createAndSet(const char *array, const size_t count);
 struct charArray charArray_createFromString(const char *array);
 
 void charArray_setAll(struct charArray *var, const char value);

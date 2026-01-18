@@ -60,6 +60,15 @@ struct charArray charArray_create(const size_t count)
     return val;
 }
 
+struct charArray charArray_createAndSet(const char *array, const size_t count)
+{
+    struct charArray val = charArray_create(count);
+
+    memcpy(val.array, array, count);
+
+    return val;
+}
+
 struct charArray charArray_createFromString(const char *array)
 {
     struct charArray val = charArray_create(1);
