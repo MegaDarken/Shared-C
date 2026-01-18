@@ -80,6 +80,8 @@ src/hashTable/hashTableEntry.h
     src/fileUtility.h
     src/floorPower.c
     src/floorPower.h
+    src/fuzzyD.c
+    src/fuzzyD.h
     src/heapSort.c
     src/heapSort.h
     src/insertionSort.c
