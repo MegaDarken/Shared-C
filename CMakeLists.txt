@@ -68,6 +68,8 @@ src/hashTable/hashTableEntry.h
     src/charArray.h
     src/charMenu.c
     src/charMenu.h
+    src/clamp.c
+    src/clamp.h
     src/clearInput.c
     src/clearInput.h
     src/consoleProcessing.c
