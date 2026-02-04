@@ -24,8 +24,9 @@ limitations under the License.
 
 float clamp_limits(const float value, const float lowerLimit, const float upperLimit);
 
+#define clamp_defaultLower(value, upperLimit) clamp_limits(value, CLAMP_DEFAULT_LOWER_LIMIT, upperLimit)
 #define clamp_default(value) clamp_limits(value, CLAMP_DEFAULT_LOWER_LIMIT, CLAMP_DEFAULT_UPPER_LIMIT)
 
-#define clamp(...) clamp_helper(__VA_ARGS__, clamp_limits, clamp_default)(__VA_ARGS__)
+#define clamp(...) clamp_helper(__VA_ARGS__, clamp_limits, clamp_defaultLower, clamp_default)(__VA_ARGS__)
 
 #endif //__CLAMP__
