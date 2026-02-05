@@ -88,6 +88,8 @@ src/hashTable/hashTableEntry.h
     src/heapSort.h
     src/insertionSort.c
     src/insertionSort.h
+    src/linearInterpolation.c
+    src/linearInterpolation.h
     src/loopUtility.h
     src/mathUtility.h
     src/memMacro.h
