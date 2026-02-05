@@ -113,6 +113,7 @@ void charArray_resize(struct charArray *var, const size_t count)
 void charArray_free(struct charArray *var)
 {
     free(var->array);
+    var->array = NULL;
 
     var->count = 0;
     var->size = 0;
