@@ -29,4 +29,8 @@ void blockPrint_colorSpaceFloat_resetlessLine(const float *data, const size_t wi
 void blockPrint_colorSpaceFloat_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
 void blockPrint_colorSpaceFloat(const unsigned char *data, const size_t width, const size_t height);
 
+void blockPrint_clipSpaceFloat_resetlessLine(const float *data, const size_t width, const size_t height, const size_t lineNumber);
+void blockPrint_clipSpaceFloat_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
+void blockPrint_clipSpaceFloat(const unsigned char *data, const size_t width, const size_t height);
+
 #endif //__BLOCK_PRINT__

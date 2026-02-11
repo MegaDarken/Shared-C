@@ -182,3 +182,57 @@ void blockPrint_colorSpaceFloat(const unsigned char *data, const size_t width, c
         printf("\n");
     }
 }
+
+void blockPrint_clipSpaceFloat_resetlessLine(const float *data, const size_t width, const size_t height, const size_t lineNumber)
+{
+    int x = 0;
+    int y = lineNumber << 1;
+
+    int upperIndex = y * width * 3;
+
+    if (lineNumber == height && height & 1)
+    {
+        for (; x < width; x++)
+        {
+            upperIndex += 3;
+
+            ansiColor_setConsoleForeground24Bit(floatColor_toByte(data[upperIndex], -1, 1), floatColor_toByte(data[upperIndex + 1], -1, 1), floatColor_toByte(data[upperIndex + 2], -1, 1));
+
+            printf(HALF_BLOCK);
+        }
+
+        ansiColor_resetConsole();
+        printf("\n");
+    }
+    else
+    {
+        int lowerIndex = (upperIndex + (width * 3));
+
+        for (; x < width; x++)
+        {
+            upperIndex += 3;
+            lowerIndex += 3;
+
+            ansiColor_resetless24BitBlockPrint(
+                    floatColor_toByte(data[upperIndex], -1, 1), floatColor_toByte(data[upperIndex + 1], -1, 1), floatColor_toByte(data[upperIndex + 2], -1, 1),
+                    floatColor_toByte(data[lowerIndex], -1, 1), floatColor_toByte(data[lowerIndex + 1], -1, 1), floatColor_toByte(data[lowerIndex + 2], -1, 1));
+        }
+    }
+}
+
+void blockPrint_clipSpaceFloat_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber)
+{
+    blockPrint_clipSpaceFloat_resetlessLine(data, width, height, lineNumber);
+
+    ansiColor_resetConsole();
+}
+
+void blockPrint_clipSpaceFloat(const unsigned char *data, const size_t width, const size_t height)
+{
+    for (size_t i = 0; i < height >> 1 + (height & 1); i++)
+    {
+        blockPrint_clipSpaceFloat_line(data, width, height, i);
+
+        printf("\n");
+    }
+}
