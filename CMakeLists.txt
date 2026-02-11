@@ -58,6 +58,8 @@ src/hashTable/hashTableEntry.h
     src/binarySearch.h
     src/binarySort.c
     src/binarySort.h
+    src/blockPrint.c
+    src/blockPrint.h
     src/boxDrawing.c
     src/boxDrawing.h
     src/characterSet.c
