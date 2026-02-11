@@ -129,6 +129,59 @@ void blockPrint_24Bit(const unsigned char *data, const size_t width, const size_
     }
 }
 
+void blockPrint_colorSpaceFloatMono_resetlessLine(const float *data, const size_t width, const size_t height, const size_t lineNumber)
+{
+    int x = 0;
+    int y = lineNumber << 1;
+
+    int upperIndex = y * width;
+
+    if (lineNumber == height && height & 1)
+    {
+        for (; x < width; x++)
+        {
+            upperIndex++;
+
+            ansiColor_setConsoleForeground8BitGray(floatColor_toByte(data[upperIndex], 0, 1));
+
+            printf(HALF_BLOCK);
+        }
+
+        ansiColor_resetConsole();
+        printf("\n");
+    }
+    else
+    {
+        int lowerIndex;
+
+        for (; x < width; x++)
+        {
+            upperIndex++;
+            lowerIndex = (upperIndex + width);
+
+            ansiColor_resetless8BitGrayBlockPrint(floatColor_toByte(data[upperIndex], 0, 1), floatColor_toByte(data[lowerIndex], 0, 1));
+            
+        }
+    }
+}
+
+void blockPrint_colorSpaceFloatMono_line(const float *data, const size_t width, const size_t height, const size_t lineNumber)
+{
+    blockPrint_colorSpaceFloatMono_resetlessLine(data, width, height, lineNumber);
+
+    ansiColor_resetConsole();
+}
+
+void blockPrint_colorSpaceFloatMono(const float *data, const size_t width, const size_t height)
+{
+    for (size_t i = 0; i < height >> 1 + (height & 1); i++)
+    {
+        blockPrint_colorSpaceFloatMono_line(data, width, height, i);
+
+        printf("\n");
+    }
+}
+
 void blockPrint_colorSpaceFloat_resetlessLine(const float *data, const size_t width, const size_t height, const size_t lineNumber)
 {
     int x = 0;
@@ -178,6 +231,59 @@ void blockPrint_colorSpaceFloat(const unsigned char *data, const size_t width, c
     for (size_t i = 0; i < height >> 1 + (height & 1); i++)
     {
         blockPrint_colorSpaceFloat_line(data, width, height, i);
+
+        printf("\n");
+    }
+}
+
+void blockPrint_clipSpaceFloatMono_resetlessLine(const float *data, const size_t width, const size_t height, const size_t lineNumber)
+{
+    int x = 0;
+    int y = lineNumber << 1;
+
+    int upperIndex = y * width;
+
+    if (lineNumber == height && height & 1)
+    {
+        for (; x < width; x++)
+        {
+            upperIndex++;
+
+            ansiColor_setConsoleForeground8BitGray(floatColor_toByte(data[upperIndex], -1, 1));
+
+            printf(HALF_BLOCK);
+        }
+
+        ansiColor_resetConsole();
+        printf("\n");
+    }
+    else
+    {
+        int lowerIndex;
+
+        for (; x < width; x++)
+        {
+            upperIndex++;
+            lowerIndex = (upperIndex + width);
+
+            ansiColor_resetless8BitGrayBlockPrint(floatColor_toByte(data[upperIndex], -1, 1), floatColor_toByte(data[lowerIndex], -1, 1));
+            
+        }
+    }
+}
+
+void blockPrint_clipSpaceFloatMono_line(const float *data, const size_t width, const size_t height, const size_t lineNumber)
+{
+    blockPrint_clipSpaceFloatMono_resetlessLine(data, width, height, lineNumber);
+
+    ansiColor_resetConsole();
+}
+
+void blockPrint_clipSpaceFloatMono(const float *data, const size_t width, const size_t height)
+{
+    for (size_t i = 0; i < height >> 1 + (height & 1); i++)
+    {
+        blockPrint_clipSpaceFloatMono_line(data, width, height, i);
 
         printf("\n");
     }
