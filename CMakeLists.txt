@@ -82,6 +82,8 @@ src/hashTable/hashTableEntry.h
     src/fileCharArray.c
     src/fileUtility.c
     src/fileUtility.h
+    src/floatColor.c
+    src/floatColor.h
     src/floorPower.c
     src/floorPower.h
     src/fuzzyD.c
