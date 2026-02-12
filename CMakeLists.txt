@@ -108,7 +108,7 @@ src/hashTable/hashTableEntry.h
     src/reverse.c
     src/reverse.h
     src/rotate.h
-    src/smoothstep.h
+    src/smoothstep.c
     src/smoothstep.h
     src/spansUtility.h
     src/stringConstexpr.h
