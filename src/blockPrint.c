@@ -219,14 +219,14 @@ void blockPrint_colorSpaceFloat_resetlessLine(const float *data, const size_t wi
     }
 }
 
-void blockPrint_colorSpaceFloat_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber)
+void blockPrint_colorSpaceFloat_line(const float *data, const size_t width, const size_t height, const size_t lineNumber)
 {
     blockPrint_colorSpaceFloat_resetlessLine(data, width, height, lineNumber);
 
     ansiColor_resetConsole();
 }
 
-void blockPrint_colorSpaceFloat(const unsigned char *data, const size_t width, const size_t height)
+void blockPrint_colorSpaceFloat(const float *data, const size_t width, const size_t height)
 {
     for (size_t i = 0; i < height >> 1 + (height & 1); i++)
     {
@@ -326,14 +326,14 @@ void blockPrint_clipSpaceFloat_resetlessLine(const float *data, const size_t wid
     }
 }
 
-void blockPrint_clipSpaceFloat_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber)
+void blockPrint_clipSpaceFloat_line(const float *data, const size_t width, const size_t height, const size_t lineNumber)
 {
     blockPrint_clipSpaceFloat_resetlessLine(data, width, height, lineNumber);
 
     ansiColor_resetConsole();
 }
 
-void blockPrint_clipSpaceFloat(const unsigned char *data, const size_t width, const size_t height)
+void blockPrint_clipSpaceFloat(const float *data, const size_t width, const size_t height)
 {
     for (size_t i = 0; i < height >> 1 + (height & 1); i++)
     {

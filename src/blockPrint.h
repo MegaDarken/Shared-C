@@ -17,6 +17,8 @@ limitations under the License.
 #ifndef __BLOCK_PRINT__
 #define __BLOCK_PRINT__
 
+#include <stddef.h>
+
 void blockPrint_8BitMono_resetlessLine(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
 void blockPrint_8BitMono_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
 void blockPrint_8BitMono(const unsigned char *data, const size_t width, const size_t height);
@@ -30,15 +32,15 @@ void blockPrint_colorSpaceFloatMono_line(const float *data, const size_t width, 
 void blockPrint_colorSpaceFloatMono(const float *data, const size_t width, const size_t height);
 
 void blockPrint_colorSpaceFloat_resetlessLine(const float *data, const size_t width, const size_t height, const size_t lineNumber);
-void blockPrint_colorSpaceFloat_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
-void blockPrint_colorSpaceFloat(const unsigned char *data, const size_t width, const size_t height);
+void blockPrint_colorSpaceFloat_line(const float *data, const size_t width, const size_t height, const size_t lineNumber);
+void blockPrint_colorSpaceFloat(const float *data, const size_t width, const size_t height);
 
 void blockPrint_clipSpaceFloatMono_resetlessLine(const float *data, const size_t width, const size_t height, const size_t lineNumber);
 void blockPrint_clipSpaceFloatMono_line(const float *data, const size_t width, const size_t height, const size_t lineNumber);
 void blockPrint_clipSpaceFloatMono(const float *data, const size_t width, const size_t height);
 
 void blockPrint_clipSpaceFloat_resetlessLine(const float *data, const size_t width, const size_t height, const size_t lineNumber);
-void blockPrint_clipSpaceFloat_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
-void blockPrint_clipSpaceFloat(const unsigned char *data, const size_t width, const size_t height);
+void blockPrint_clipSpaceFloat_line(const float *data, const size_t width, const size_t height, const size_t lineNumber);
+void blockPrint_clipSpaceFloat(const float *data, const size_t width, const size_t height);
 
 #endif //__BLOCK_PRINT__
