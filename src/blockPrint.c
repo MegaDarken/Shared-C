@@ -27,13 +27,15 @@ void blockPrint_8BitMono_resetlessLine(const unsigned char *data, const size_t w
     int x = 0;
     int y = lineNumber << 1;
 
-    int upperIndex = y * width;
+    int yIndex = y * width;
+
+    int upperIndex;
 
     if (lineNumber == height && height & 1)
     {
         for (; x < width; x++)
         {
-            upperIndex++;
+            upperIndex = yIndex + x;
 
             ansiColor_setConsoleForeground8BitGray(data[upperIndex]);
 
@@ -49,8 +51,8 @@ void blockPrint_8BitMono_resetlessLine(const unsigned char *data, const size_t w
 
         for (; x < width; x++)
         {
-            upperIndex++;
-            lowerIndex = (upperIndex + width);
+            upperIndex = yIndex + x;
+            lowerIndex = upperIndex + width;
 
             ansiColor_resetless8BitGrayBlockPrint(data[upperIndex], data[lowerIndex]);
             
@@ -80,13 +82,15 @@ void blockPrint_24Bit_resetlessLine(const unsigned char *data, const size_t widt
     int x = 0;
     int y = lineNumber << 1;
 
-    int upperIndex = y * width * 3;
+    int yIndex = y * width;
+
+    int upperIndex;
 
     if (lineNumber == height && height & 1)
     {
         for (; x < width; x++)
         {
-            upperIndex += 3;
+            upperIndex = (yIndex + x) * 3;
 
             ansiColor_setConsoleForeground24Bit(data[upperIndex], data[upperIndex + 1], data[upperIndex + 2]);
 
@@ -98,12 +102,12 @@ void blockPrint_24Bit_resetlessLine(const unsigned char *data, const size_t widt
     }
     else
     {
-        int lowerIndex = (upperIndex + (width * 3));
+        int lowerIndex;
 
         for (; x < width; x++)
         {
-            upperIndex += 3;
-            lowerIndex += 3;
+            upperIndex = (yIndex + x) * 3;
+            lowerIndex = (upperIndex + (width * 3));
 
             ansiColor_resetless24BitBlockPrint(
                     data[upperIndex], data[upperIndex + 1], data[upperIndex + 2],
@@ -134,13 +138,15 @@ void blockPrint_colorSpaceFloatMono_resetlessLine(const float *data, const size_
     int x = 0;
     int y = lineNumber << 1;
 
-    int upperIndex = y * width;
+    int yIndex = y * width;
+
+    int upperIndex;
 
     if (lineNumber == height && height & 1)
     {
         for (; x < width; x++)
         {
-            upperIndex++;
+            upperIndex = yIndex + x;
 
             ansiColor_setConsoleForeground8BitGray(floatColor_toByte(data[upperIndex], 0, 1));
 
@@ -156,8 +162,8 @@ void blockPrint_colorSpaceFloatMono_resetlessLine(const float *data, const size_
 
         for (; x < width; x++)
         {
-            upperIndex++;
-            lowerIndex = (upperIndex + width);
+            upperIndex = yIndex + x;
+            lowerIndex = upperIndex + width;
 
             ansiColor_resetless8BitGrayBlockPrint(floatColor_toByte(data[upperIndex], 0, 1), floatColor_toByte(data[lowerIndex], 0, 1));
             
@@ -187,13 +193,15 @@ void blockPrint_colorSpaceFloat_resetlessLine(const float *data, const size_t wi
     int x = 0;
     int y = lineNumber << 1;
 
-    int upperIndex = y * width * 3;
+    int yIndex = y * width;
+
+    int upperIndex;
 
     if (lineNumber == height && height & 1)
     {
         for (; x < width; x++)
         {
-            upperIndex += 3;
+            upperIndex = (yIndex + x) * 3;
 
             ansiColor_setConsoleForeground24Bit(floatColor_toByte(data[upperIndex], 0, 1), floatColor_toByte(data[upperIndex + 1], 0, 1), floatColor_toByte(data[upperIndex + 2], 0, 1));
 
@@ -205,12 +213,12 @@ void blockPrint_colorSpaceFloat_resetlessLine(const float *data, const size_t wi
     }
     else
     {
-        int lowerIndex = (upperIndex + (width * 3));
+        int lowerIndex;
 
         for (; x < width; x++)
         {
-            upperIndex += 3;
-            lowerIndex += 3;
+            upperIndex = (yIndex + x) * 3;
+            lowerIndex = (upperIndex + (width * 3));
 
             ansiColor_resetless24BitBlockPrint(
                     floatColor_toByte(data[upperIndex], 0, 1), floatColor_toByte(data[upperIndex + 1], 0, 1), floatColor_toByte(data[upperIndex + 2], 0, 1),
@@ -241,13 +249,15 @@ void blockPrint_clipSpaceFloatMono_resetlessLine(const float *data, const size_t
     int x = 0;
     int y = lineNumber << 1;
 
-    int upperIndex = y * width;
+    int yIndex = y * width;
+
+    int upperIndex;
 
     if (lineNumber == height && height & 1)
     {
         for (; x < width; x++)
         {
-            upperIndex++;
+            upperIndex = yIndex + x;
 
             ansiColor_setConsoleForeground8BitGray(floatColor_toByte(data[upperIndex], -1, 1));
 
@@ -263,8 +273,8 @@ void blockPrint_clipSpaceFloatMono_resetlessLine(const float *data, const size_t
 
         for (; x < width; x++)
         {
-            upperIndex++;
-            lowerIndex = (upperIndex + width);
+            upperIndex = yIndex + x;
+            lowerIndex = upperIndex + width;
 
             ansiColor_resetless8BitGrayBlockPrint(floatColor_toByte(data[upperIndex], -1, 1), floatColor_toByte(data[lowerIndex], -1, 1));
             
@@ -294,13 +304,15 @@ void blockPrint_clipSpaceFloat_resetlessLine(const float *data, const size_t wid
     int x = 0;
     int y = lineNumber << 1;
 
-    int upperIndex = y * width * 3;
+    int yIndex = y * width;
+
+    int upperIndex;
 
     if (lineNumber == height && height & 1)
     {
         for (; x < width; x++)
         {
-            upperIndex += 3;
+            upperIndex = (yIndex + x) * 3;
 
             ansiColor_setConsoleForeground24Bit(floatColor_toByte(data[upperIndex], -1, 1), floatColor_toByte(data[upperIndex + 1], -1, 1), floatColor_toByte(data[upperIndex + 2], -1, 1));
 
@@ -312,12 +324,12 @@ void blockPrint_clipSpaceFloat_resetlessLine(const float *data, const size_t wid
     }
     else
     {
-        int lowerIndex = (upperIndex + (width * 3));
+        int lowerIndex;
 
         for (; x < width; x++)
         {
-            upperIndex += 3;
-            lowerIndex += 3;
+            upperIndex = (yIndex + x) * 3;
+            lowerIndex = (upperIndex + (width * 3));
 
             ansiColor_resetless24BitBlockPrint(
                     floatColor_toByte(data[upperIndex], -1, 1), floatColor_toByte(data[upperIndex + 1], -1, 1), floatColor_toByte(data[upperIndex + 2], -1, 1),
