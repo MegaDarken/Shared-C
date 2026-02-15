@@ -51,6 +51,7 @@ src/hashTable/hashTableEntry.h
     src/ansiCursor.c
     src/ansiCursor.h
     src/arrayCheck.h
+    src/arrayCombine.h
     src/arrayMathUtility.h
     src/arrayPrint.c
     src/arrayPrint.h
