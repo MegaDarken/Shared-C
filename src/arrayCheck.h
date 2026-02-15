@@ -4,9 +4,9 @@
 #define array_contains(array, arraySize, value) ({\
     char __returnValue = 0; \
     do { \
-        for (size_t i = 0; i < arraySize; i++) \
+        for (size_t __i = 0; __i < arraySize; __i++) \
         { \
-            if (array[i] == value) \
+            if (array[__i] == value) \
             { \
                 __returnValue = 1; \
                 break; \
