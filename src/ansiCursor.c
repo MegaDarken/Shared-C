@@ -54,6 +54,11 @@ void ansiCursor_fcolumn(FILE *stream, const unsigned int val)
 }
 
 //Position
+void ansiCursor_fpositionHorizontal(FILE *stream, const unsigned int position)
+{
+    fprintf(stream, "\033[%uG", position);
+}
+
 void ansiCursor_fposition(FILE *stream, const unsigned int horizontal, const unsigned int vertical)
 {
     fprintf(stream, "\033[%u;%uH", horizontal, vertical);

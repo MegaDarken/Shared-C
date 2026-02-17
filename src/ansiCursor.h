@@ -43,6 +43,9 @@ void ansiCursor_fcolumn(FILE *stream, const unsigned int val);
 #define ansiCursor_column(val) ansiCursor_fcolumn(stdout, val)
 
 //Position
+void ansiCursor_fpositionHorizontal(FILE *stream, const unsigned int position);
+#define ansiCursor_positionHorizontal(position) ansiCursor_fpositionHorizontal(stdout, position)
+
 void ansiCursor_fposition(FILE *stream, const unsigned int horizontal, const unsigned int vertical);
 #define ansiCursor_position(horizontal, vertical) ansiCursor_fposition(stdout, horizontal, vertical)
 
