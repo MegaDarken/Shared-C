@@ -354,3 +354,58 @@ void blockPrint_clipSpaceFloat(const float *data, const size_t width, const size
         printf("\n");
     }
 }
+
+void blockPrint_customFloatMono_resetlessLine(const float *data, const size_t width, const size_t height, const float lower, const float upper, const size_t lineNumber)
+{
+    int x = 0;
+    int y = lineNumber << 1;
+
+    int yIndex = y * width;
+
+    int upperIndex;
+
+    if (lineNumber == height && height & 1)
+    {
+        for (; x < width; x++)
+        {
+            upperIndex = yIndex + x;
+
+            ansiColor_setConsoleForeground8BitGray(floatColor_toByte(data[upperIndex], lower, upper));
+
+            printf(HALF_BLOCK);
+        }
+
+        ansiColor_resetConsole();
+        printf("\n");
+    }
+    else
+    {
+        int lowerIndex;
+
+        for (; x < width; x++)
+        {
+            upperIndex = yIndex + x;
+            lowerIndex = upperIndex + width;
+
+            ansiColor_resetless8BitGrayBlockPrint(floatColor_toByte(data[upperIndex], lower, upper), floatColor_toByte(data[lowerIndex], lower, upper));
+            
+        }
+    }
+}
+
+void blockPrint_customFloatMono_line(const float *data, const size_t width, const size_t height, const float lower, const float upper, const size_t lineNumber)
+{
+    blockPrint_customFloatMono_resetlessLine(data, width, height, lower, upper, lineNumber);
+
+    ansiColor_resetConsole();
+}
+
+void blockPrint_customFloatMono(const float *data, const size_t width, const size_t height, const float lower, const float upper)
+{
+    for (size_t i = 0; i < height >> 1 + (height & 1); i++)
+    {
+        blockPrint_customFloatMono_line(data, width, height, lower, upper, i);
+
+        printf("\n");
+    }
+}

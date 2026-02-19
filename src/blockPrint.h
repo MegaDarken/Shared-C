@@ -43,4 +43,8 @@ void blockPrint_clipSpaceFloat_resetlessLine(const float *data, const size_t wid
 void blockPrint_clipSpaceFloat_line(const float *data, const size_t width, const size_t height, const size_t lineNumber);
 void blockPrint_clipSpaceFloat(const float *data, const size_t width, const size_t height);
 
+void blockPrint_customFloatMono_resetlessLine(const float *data, const size_t width, const size_t height, const float lower, const float upper, const size_t lineNumber);
+void blockPrint_customFloatMono_line(const float *data, const size_t width, const size_t height, const float lower, const float upper, const size_t lineNumber);
+void blockPrint_customFloatMono(const float *data, const size_t width, const size_t height, const float lower, const float upper);
+
 #endif //__BLOCK_PRINT__
