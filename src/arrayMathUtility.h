@@ -36,4 +36,46 @@
     } \
     _output; })
 
+// Index focused
+
+#define arrayMathUtility_maxIndex(array, count) \
+    ({ __typeof__ (array) _array = (array); \
+    __typeof__ (count) _maxIndex = 0; \
+    for ( size_t _index = 1; _index < count; _index++ ) { \
+        if (_array[_maxIndex] < _array[_index]) { \
+            _maxIndex = _index; \
+        } \
+    } \
+    _maxIndex; })
+
+#define arrayMathUtility_minIndex(array, count) \
+    ({ __typeof__ (array) _array = (array); \
+    __typeof__ (count) _minIndex = 0; \
+    for ( size_t _index = 1; _index < count; _index++ ) { \
+        if (_array[_minIndex] > _array[_index]) { \
+            _minIndex = _index; \
+        } \
+    } \
+    _minIndex; })
+
+#define arrayMathUtility_absMaxIndex(array, count) \
+    ({ __typeof__ (array) _array = (array); \
+    __typeof__ (count) _maxIndex = 0; \
+    for ( size_t _index = 1; _index < count; _index++ ) { \
+        if (abs(_array[_maxIndex]) < abs(_array[_index])) { \
+            _maxIndex = _index; \
+        } \
+    } \
+    _maxIndex; })
+
+#define arrayMathUtility_absMinIndex(array, count) \
+    ({ __typeof__ (array) _array = (array); \
+    __typeof__ (count) _minIndex = 0; \
+    for ( size_t _index = 1; _index < count; _index++ ) { \
+        if (abs(_array[_minIndex]) > abs(_array[_index])) { \
+            _minIndex = _index; \
+        } \
+    } \
+    _minIndex; })
+
 #endif //ARRAY_MATH_UTILITY_
