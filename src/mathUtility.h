@@ -19,6 +19,8 @@ limitations under the License.
 
 #include <stdlib.h>
 
+// Min and Max
+
 #undef max
 #define max(a,b) \
     ({ __typeof__ (a) _a = (a); \
@@ -43,5 +45,15 @@ limitations under the License.
     ({ __typeof__ (a) _a = (a); \
     __typeof__ (b) _b = (b); \
     abs(_a) < abs(_b) ? _a : _b; })
+
+// Division
+
+#define divMod(dividend, divisor, quotient, remainder) \
+    do { \
+        __typeof__ (dividend) _dividend = (dividend); \
+        __typeof__ (divisor) _divisor = (divisor); \
+        quotient = _dividend / _divisor; \
+        remainder = _dividend - quotient * _divisor; \
+    } while(0)
 
 #endif //MATH_UTILITY_
