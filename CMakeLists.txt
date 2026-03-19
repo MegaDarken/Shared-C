@@ -112,6 +112,7 @@ src/hashTable/hashTableEntry.h
     src/smoothstep.c
     src/smoothstep.h
     src/spansUtility.h
+    src/stack.h
     src/stringConstexpr.h
     src/stringHash.h
     src/substringUtility.c
