@@ -34,6 +34,7 @@ limitations under the License.
     void stack_push_##type(struct stack_##type* var, type entry); \
     type stack_pop_##type(struct stack_##type* var); \
     type stack_peek_##type(struct stack_##type* var); \
+    type* stack_peekPointer_##type(struct stack_##type* var); \
     int stack_isEmpty_##type();
 
 #define declare_stack(type) \
@@ -76,6 +77,9 @@ limitations under the License.
     } \
     type stack_peek_##type(struct stack_##type* var){ \
         return var->data[var->usedCount]; \
+    } \
+    type* stack_peekPointer_##type(struct stack_##type* var){ \
+        return &var->data[var->usedCount]; \
     } \
     int stack_isEmpty_##type(struct stack_##type* var){ \
         return var->usedCount <= 0; \
