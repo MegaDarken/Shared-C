@@ -18,6 +18,7 @@ limitations under the License.
 #define __STACK__
 
 #include <stddef.h>
+#include <stdio.h>
 
 #include "mathUtility.h"
 
