@@ -25,3 +25,24 @@ unsigned char floatColor_toByte(const float value, const float lower, const floa
 {
     return (value - lower) * 255 / (upper - lower);
 }
+
+float floatColor_arrayFromByte(const unsigned char* source, float* dest, const unsigned long count, const float lower, const float upper)
+{
+    float inverse = ((float)1 / (float)255) * (upper - lower);
+
+    for (unsigned long i = 0; i < count; i++)
+    {
+        dest[i] = ((float)source[i] * inverse) + lower;
+    }
+}
+
+unsigned char floatColor_arrayToByte(const float* source, unsigned char* dest, const unsigned long count, const float lower, const float upper)
+{
+    float inverse = (float)255 / (upper - lower);
+
+    for (unsigned long i = 0; i < count; i++)
+    {
+        dest[i] = (source[i] - lower) * inverse;
+    }
+}
+

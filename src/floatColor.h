@@ -20,4 +20,7 @@ limitations under the License.
 float floatColor_fromByte(const unsigned char value, const float lower, const float upper);
 unsigned char floatColor_toByte(const float value, const float lower, const float upper);
 
+float floatColor_arrayFromByte(const unsigned char* source, float* dest, const unsigned long count, const float lower, const float upper);
+unsigned char floatColor_arrayToByte(const float* source, unsigned char* dest, const unsigned long count, const float lower, const float upper);
+
 #endif //__FLOAT_COLOR__
