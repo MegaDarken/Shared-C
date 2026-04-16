@@ -23,23 +23,23 @@ limitations under the License.
 #include "mathUtility.h"
 
 #define define_stack(type) \
-    struct stack_##type { \
+    typedef struct { \
         size_t allocatedCount; \
         size_t usedCount; \
         type* data; \
-    }; \
-    void stack_createDest_##type(struct stack_##type* dest); \
-    struct stack_##type stack_create_##type(); \
-    void stack_free_##type(struct stack_##type* var); \
-    void stack_resize_##type(struct stack_##type* var, size_t newAllocationCount); \
-    void stack_push_##type(struct stack_##type* var, type entry); \
-    type stack_pop_##type(struct stack_##type* var); \
-    type stack_peek_##type(struct stack_##type* var); \
-    type* stack_peekPointer_##type(struct stack_##type* var); \
+    } stack_##type; \
+    void stack_createDest_##type(stack_##type* dest); \
+    stack_##type stack_create_##type(); \
+    void stack_free_##type(stack_##type* var); \
+    void stack_resize_##type(stack_##type* var, size_t newAllocationCount); \
+    void stack_push_##type(stack_##type* var, type entry); \
+    type stack_pop_##type(stack_##type* var); \
+    type stack_peek_##type(stack_##type* var); \
+    type* stack_peekPointer_##type(stack_##type* var); \
     int stack_isEmpty_##type();
 
 #define declare_stack(type) \
-    void stack_createDest_##type(struct stack_##type* dest){ \
+    void stack_createDest_##type(stack_##type* dest){ \
         dest->allocatedCount = 1; \
         dest->usedCount = 0; \
         dest->data = malloc(sizeof(type) * dest->allocatedCount); \
@@ -48,17 +48,17 @@ limitations under the License.
             abort(); \
         } \
     } \
-    struct stack_##type stack_create_##type(){ \
-        struct stack_##type output; \
+    stack_##type stack_create_##type(){ \
+        stack_##type output; \
         stack_createDest_##type(&output); \
         return output; \
     } \
-    void stack_free_##type(struct stack_##type* var){ \
+    void stack_free_##type(stack_##type* var){ \
         free(var->data); \
         var->data = NULL; \
-        var->allocatedCount; \
+        var->allocatedCount = 0; \
     } \
-    void stack_resize_##type(struct stack_##type* var, size_t newAllocationCount){ \
+    void stack_resize_##type(stack_##type* var, size_t newAllocationCount){ \
         var->allocatedCount = newAllocationCount; \
         var->data = realloc(var->data, sizeof(type) * var->allocatedCount); \
         if (!var->data && var->allocatedCount != 0){ \
@@ -69,20 +69,20 @@ limitations under the License.
             var->usedCount = var->allocatedCount; \
         } \
     } \
-    void stack_push_##type(struct stack_##type* var, type entry){ \
+    void stack_push_##type(stack_##type* var, type entry){ \
         if (var->usedCount >= var->allocatedCount) stack_resize_##type(var, max(1, var->usedCount << 1)); \
         var->data[++var->usedCount] = entry; \
     } \
-    type stack_pop_##type(struct stack_##type* var){ \
+    type stack_pop_##type(stack_##type* var){ \
         return var->data[var->usedCount--]; \
     } \
-    type stack_peek_##type(struct stack_##type* var){ \
+    type stack_peek_##type(stack_##type* var){ \
         return var->data[var->usedCount]; \
     } \
-    type* stack_peekPointer_##type(struct stack_##type* var){ \
+    type* stack_peekPointer_##type(stack_##type* var){ \
         return &var->data[var->usedCount]; \
     } \
-    int stack_isEmpty_##type(struct stack_##type* var){ \
+    int stack_isEmpty_##type(stack_##type* var){ \
         return var->usedCount <= 0; \
     }
 
