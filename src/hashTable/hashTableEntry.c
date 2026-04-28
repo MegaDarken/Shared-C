@@ -99,3 +99,25 @@ void hashTableEntry_addEntryToTail(struct hashTableEntry *var, struct hashTableE
         currentEntry = currentEntry->next;
     }
 }
+
+void hashTableEntry_fprint(FILE *stream, struct hashTableEntry *var)
+{
+    charArray_fprint(stream, &var->key);
+
+    fprintf(stream, ":");
+
+    if (var->valueSize > 0)
+    {
+        for (size_t i = 0; i < (var->valueSize - 1); i++)
+        {
+            fprintf(stream, "%hhu,", ((char*)var->value)[i]);
+        }
+
+        fprintf(stream, "%hhu", ((char*)var->value)[var->valueSize - 1]);
+    }
+}
+
+void hashTableEntry_print(struct hashTableEntry *var)
+{
+    hashTableEntry_fprint(stdout, var);
+}

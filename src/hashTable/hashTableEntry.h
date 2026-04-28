@@ -37,4 +37,7 @@ struct hashTableEntry *hashTableEntry_ejectNext(struct hashTableEntry *var);
 
 void hashTableEntry_addEntryToTail(struct hashTableEntry *var, struct hashTableEntry *newEntry);
 
+void hashTableEntry_fprint(FILE *stream, struct hashTableEntry *var);
+void hashTableEntry_print(struct hashTableEntry *var);
+
 #endif //HASH_TABLE_ENTRY_
