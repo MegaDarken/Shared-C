@@ -63,6 +63,9 @@ void *hashTable_remove(struct hashTable *var, const char *key, size_t keySize);
 
 void hashTable_forEach(struct hashTable *var, void (*callback)(void *));
 
+void hashTable_fprint(FILE *stream, struct hashTable *var);
+void hashTable_print(struct hashTable *var);
+
 #ifdef __cplusplus
 }
 #endif //__cplusplus

@@ -245,6 +245,34 @@ void hashTable_forEach(struct hashTable *var, void (*callback)(void *))
     }
 }
 
+void hashTable_fprint(FILE *stream, struct hashTable *var)
+{
+    size_t _count = hashTable_tableCount(var);
+    fprintf(stream, "%zu:", _count);
+
+    struct hashTableEntry *entry;
+
+    for (size_t i = 0; i < _count; i++)
+    {
+        entry = var->table[i];
+
+        while (entry != NULL)
+        {
+            if (entry->value != NULL) 
+            {
+                fprintf(stream, "|");
+                hashTableEntry_fprint(stream, entry->value);
+            }
+            entry = entry->next;
+        }
+    }
+}
+
+void hashTable_print(struct hashTable *var)
+{
+    hashTable_fprint(stdout, var);
+}
+
 #ifdef __cplusplus
 }
 #endif //__cplusplus
