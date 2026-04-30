@@ -71,16 +71,17 @@ limitations under the License.
     } \
     void stack_push_##type(stack_##type* var, type entry){ \
         if (var->usedCount >= var->allocatedCount) stack_resize_##type(var, max(1, var->usedCount << 1)); \
-        var->data[++var->usedCount] = entry; \
+        var->data[var->usedCount++] = entry; \
     } \
     type stack_pop_##type(stack_##type* var){ \
-        return var->data[var->usedCount--]; \
+        return var->data[--var->usedCount]; \
     } \
     type stack_peek_##type(stack_##type* var){ \
-        return var->data[var->usedCount]; \
+        return var->data[var->usedCount - 1]; \
     } \
     type* stack_peekPointer_##type(stack_##type* var){ \
-        return &var->data[var->usedCount]; \
+        if (stack_isEmpty_##type(var)) return NULL; \
+        return &var->data[var->usedCount - 1]; \
     } \
     int stack_isEmpty_##type(stack_##type* var){ \
         return var->usedCount <= 0; \
