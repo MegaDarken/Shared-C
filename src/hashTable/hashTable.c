@@ -261,7 +261,7 @@ void hashTable_fprint(FILE *stream, struct hashTable *var)
             if (entry->value != NULL) 
             {
                 fprintf(stream, "|");
-                hashTableEntry_fprint(stream, entry->value);
+                hashTableEntry_fprint(stream, entry);
             }
             entry = entry->next;
         }
