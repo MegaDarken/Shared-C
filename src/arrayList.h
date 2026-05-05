@@ -34,7 +34,7 @@ limitations under the License.
 
 #define declare_arrayList(type) \
     void arrayList_createDest_##type(arrayList_##type* dest, size_t count){ \
-        dest->count = 1; \
+        dest->count = count; \
         dest->data = malloc(sizeof(type) * dest->count); \
         if (!dest->data){ \
             perror("Error allocating memory for arrayList!"); \
