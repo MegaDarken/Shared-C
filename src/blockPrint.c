@@ -77,7 +77,7 @@ void blockPrint_8BitMono(const unsigned char *data, const size_t width, const si
     }
 }
 
-void blockPrint_24Bit_resetlessLine(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber)
+void blockPrint_24BitRGB_resetlessLine(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber)
 {
     int x = 0;
     int y = lineNumber << 1;
@@ -116,18 +116,18 @@ void blockPrint_24Bit_resetlessLine(const unsigned char *data, const size_t widt
     }
 }
 
-void blockPrint_24Bit_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber)
+void blockPrint_24BitRGB_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber)
 {
-    blockPrint_24Bit_resetlessLine(data, width, height, lineNumber);
+    blockPrint_24BitRGB_resetlessLine(data, width, height, lineNumber);
 
     ansiColor_resetConsole();
 }
 
-void blockPrint_24Bit(const unsigned char *data, const size_t width, const size_t height)
+void blockPrint_24BitRGB(const unsigned char *data, const size_t width, const size_t height)
 {
     for (size_t i = 0; i < height >> 1 + (height & 1); i++)
     {
-        blockPrint_24Bit_line(data, width, height, i);
+        blockPrint_24BitRGB_line(data, width, height, i);
 
         printf("\n");
     }
