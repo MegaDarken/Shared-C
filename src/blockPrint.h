@@ -31,6 +31,10 @@ void blockPrint_24BitRGB_resetlessLine(const unsigned char *data, const size_t w
 void blockPrint_24BitRGB_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
 void blockPrint_24BitRGB(const unsigned char *data, const size_t width, const size_t height);
 
+void blockPrint_32BitRGBA_resetlessLine(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
+void blockPrint_32BitRGBA_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
+void blockPrint_32BitRGBA(const unsigned char *data, const size_t width, const size_t height);
+
 void blockPrint_colorSpaceFloatMono_resetlessLine(const float *data, const size_t width, const size_t height, const size_t lineNumber);
 void blockPrint_colorSpaceFloatMono_line(const float *data, const size_t width, const size_t height, const size_t lineNumber);
 void blockPrint_colorSpaceFloatMono(const float *data, const size_t width, const size_t height);

@@ -188,6 +188,62 @@ void blockPrint_24BitRGB(const unsigned char *data, const size_t width, const si
     }
 }
 
+void blockPrint_32BitRGBA_resetlessLine(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber)
+{
+    int x = 0;
+    int y = lineNumber << 1;
+
+    int yIndex = y * width;
+
+    int upperIndex;
+
+    if (lineNumber == height && height & 1)
+    {
+        for (; x < width; x++)
+        {
+            upperIndex = (yIndex + x) << 2;
+
+            ansiColor_setConsoleForeground24Bit(data[upperIndex], data[upperIndex + 1], data[upperIndex + 2]);
+
+            printf(HALF_BLOCK);
+        }
+
+        ansiColor_resetConsole();
+        printf("\n");
+    }
+    else
+    {
+        int lowerIndex;
+
+        for (; x < width; x++)
+        {
+            upperIndex = (yIndex + x) << 2;
+            lowerIndex = (upperIndex + (width << 2));
+
+            ansiColor_resetless24BitBlockPrint(
+                    data[upperIndex], data[upperIndex + 1], data[upperIndex + 2],
+                    data[lowerIndex], data[lowerIndex + 1], data[lowerIndex + 2]);
+        }
+    }
+}
+
+void blockPrint_32BitRGBA_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber)
+{
+    blockPrint_32BitRGBA_resetlessLine(data, width, height, lineNumber);
+
+    ansiColor_resetConsole();
+}
+
+void blockPrint_32BitRGBA(const unsigned char *data, const size_t width, const size_t height)
+{
+    for (size_t i = 0; i < height >> 1 + (height & 1); i++)
+    {
+        blockPrint_32BitRGBA_line(data, width, height, i);
+
+        printf("\n");
+    }
+}
+
 void blockPrint_colorSpaceFloatMono_resetlessLine(const float *data, const size_t width, const size_t height, const size_t lineNumber)
 {
     int x = 0;
