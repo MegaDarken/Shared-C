@@ -77,6 +77,61 @@ void blockPrint_8BitMono(const unsigned char *data, const size_t width, const si
     }
 }
 
+void blockPrint_16BitMonoAlpha_resetlessLine(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber)
+{
+    int x = 0;
+    int y = lineNumber << 1;
+
+    int yIndex = y * width;
+
+    int upperIndex;
+
+    if (lineNumber == height && height & 1)
+    {
+        for (; x < width << 1; x++)
+        {
+            upperIndex = (yIndex + x) << 1;
+
+            ansiColor_setConsoleForeground8BitGray(data[upperIndex]);
+
+            printf(HALF_BLOCK);
+        }
+
+        ansiColor_resetConsole();
+        printf("\n");
+    }
+    else
+    {
+        int lowerIndex;
+
+        for (; x < width; x++)
+        {
+            upperIndex = (yIndex + x) << 1;
+            lowerIndex = upperIndex + (width << 1);
+
+            ansiColor_resetless8BitGrayBlockPrint(data[upperIndex], data[lowerIndex]);
+            
+        }
+    }
+}
+
+void blockPrint_16BitMonoAlpha_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber)
+{
+    blockPrint_16BitMonoAlpha_resetlessLine(data, width, height, lineNumber);
+
+    ansiColor_resetConsole();
+}
+
+void blockPrint_16BitMonoAlpha(const unsigned char *data, const size_t width, const size_t height)
+{
+    for (size_t i = 0; i < height >> 1 + (height & 1); i++)
+    {
+        blockPrint_16BitMonoAlpha_line(data, width, height, i);
+
+        printf("\n");
+    }
+}
+
 void blockPrint_24BitRGB_resetlessLine(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber)
 {
     int x = 0;

@@ -23,6 +23,10 @@ void blockPrint_8BitMono_resetlessLine(const unsigned char *data, const size_t w
 void blockPrint_8BitMono_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
 void blockPrint_8BitMono(const unsigned char *data, const size_t width, const size_t height);
 
+void blockPrint_16BitMonoAlpha_resetlessLine(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
+void blockPrint_16BitMonoAlpha_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
+void blockPrint_16BitMonoAlpha(const unsigned char *data, const size_t width, const size_t height);
+
 void blockPrint_24BitRGB_resetlessLine(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
 void blockPrint_24BitRGB_line(const unsigned char *data, const size_t width, const size_t height, const size_t lineNumber);
 void blockPrint_24BitRGB(const unsigned char *data, const size_t width, const size_t height);
