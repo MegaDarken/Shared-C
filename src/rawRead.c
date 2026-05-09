@@ -22,7 +22,7 @@ limitations under the License.
 #include <stdlib.h>
 #include <unistd.h>
 
-#ifdef _WIN32 //_WIN16 ||
+#ifdef _WIN32 || _WIN64 //_WIN16 ||
 #include <conio.h>
 #else //_WIN16 || _WIN32
 #include <termios.h>
@@ -36,7 +36,7 @@ extern "C" {
 
 void disableRawMode()
 {
-#ifdef _WIN32 //_WIN16 ||
+#ifdef _WIN32 || _WIN64 //_WIN16 ||
 
 #else //_WIN16 || _WIN32
   tcsetattr(STDIN_FILENO, TCSAFLUSH, &orig_termios);
@@ -45,7 +45,7 @@ void disableRawMode()
 
 void enableRawMode()
 {
-#ifdef _WIN32 //_WIN16 ||
+#ifdef _WIN32 || _WIN64 //_WIN16 ||
 
 #else //_WIN16 || _WIN32
   tcgetattr(STDIN_FILENO, &orig_termios);
@@ -61,7 +61,7 @@ ssize_t rawReadBuffer(void* array, ssize_t count)
     enableRawMode();
 
     ssize_t result;
-#ifdef _WIN32 //_WIN16 ||
+#ifdef _WIN32 || _WIN64 //_WIN16 ||
     ((int*)array)[0] = getch();
     result = 1;
 #else //_WIN16 || _WIN32
@@ -100,7 +100,7 @@ void rawReadLoop(const int escape)
 
     int c = 0;
 
-#ifdef _WIN32 //_WIN16 ||
+#ifdef _WIN32 || _WIN64 //_WIN16 ||
     for (c = getch();c != escape;c = getch())
 #else //_WIN16 || _WIN32
     while (read(STDIN_FILENO, &c, 2) == 1 && c != escape)
