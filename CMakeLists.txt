@@ -105,6 +105,8 @@ src/hashTable/hashTableEntry.h
     src/mergeSort.h
     src/midpoint.c
     src/midpoint.h
+    src/qsort_arg.c
+    src/qsort_arg.h
     src/rawRead.c
     src/rawRead.h
     src/reverse.c
