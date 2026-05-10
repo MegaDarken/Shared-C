@@ -12,8 +12,8 @@
         __typeof__ (count) _count = (count);\
         if (_count <= 1) break;\
         __typeof__ (array) _array = (array);\
-        for ( __typeof__ (count) _i = _count - 1; _i > 1; _i-- ) { \
-            __typeof__ (count) _rand = (rand() % _i); \
+        for ( __typeof__ (count) _i = _count - 1; _i > 0; _i-- ) { \
+            __typeof__ (count) _rand = (rand() % (_i + 1)); \
             swap(&(_array[_i]), &(_array[_rand])); \
         } \
     } while(0)
@@ -24,8 +24,8 @@
         if (_count <= 1) break;\
         char *_array = (char *)(array);\
         __typeof__ (elementSize) _elementSize = (elementSize);\
-        for ( __typeof__ (_count) _i = _count - 1; _i > 1; _i-- ) { \
-            __typeof__ (count) _rand = (rand() % _i); \
+        for ( __typeof__ (_count) _i = _count - 1; _i > 0; _i-- ) { \
+            __typeof__ (count) _rand = (rand() % (_i + 1)); \
             swap(&_array[_i * _elementSize], &_array[_rand * _elementSize], _elementSize); \
         } \
     } while(0)
