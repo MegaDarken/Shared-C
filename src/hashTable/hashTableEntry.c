@@ -102,9 +102,10 @@ void hashTableEntry_addEntryToTail(struct hashTableEntry *var, struct hashTableE
 
 void hashTableEntry_fprint(FILE *stream, struct hashTableEntry *var)
 {
+    fprintf(stream, "%zu[", var->key.count);
     charArray_fprint(stream, &var->key);
 
-    fprintf(stream, ":");
+    fprintf(stream, "]:%zu[", var->valueSize);
 
     if (var->valueSize > 0)
     {
@@ -113,7 +114,7 @@ void hashTableEntry_fprint(FILE *stream, struct hashTableEntry *var)
             fprintf(stream, "%hhu,", ((char*)var->value)[i]);
         }
 
-        fprintf(stream, "%hhu", ((char*)var->value)[var->valueSize - 1]);
+        fprintf(stream, "%hhu]", ((char*)var->value)[var->valueSize - 1]);
     }
 }
 
